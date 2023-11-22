@@ -7,9 +7,10 @@ Everything you need to build a Svelte project, powered by [`create-svelte`](http
 If you're seeing this, you've probably already done this step. Congrats!
 
 ```bash
-# Instalar
 pnpm i
+```
 ou
+```bash
 npm i
 ```
 
