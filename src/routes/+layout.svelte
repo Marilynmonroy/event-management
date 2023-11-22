@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 
@@ -9,7 +9,17 @@
 </script>
 
 <!-- App Shell -->
+<AppShell></AppShell>
+
 <AppShell>
-	<h1>isso aqui e um layout</h1>
+	<svelte:fragment slot="header">
+		<h1>isso aqui e um layout</h1>
+	</svelte:fragment>
+	<!-- (sidebarLeft) -->
+	<!-- (sidebarRight) -->
+	<!-- (pageHeader) -->
+	<!-- Router Slot -->
 	<slot />
+	<!-- ---- / ---- -->
+	<!-- (footer) -->
 </AppShell>
