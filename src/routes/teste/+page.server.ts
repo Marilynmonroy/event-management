@@ -19,6 +19,7 @@ export const actions = {
 	criarTeste: async ({ request }) => {
 		const data = await request.formData();
 
+		// Coloque em uma variavel e faça as validaçoes
 		const nome: any = data.get('nomeTeste');
 		const senha: any = data.get('senhaTeste');
 
