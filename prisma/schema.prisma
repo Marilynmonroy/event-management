@@ -53,3 +53,9 @@ enum Role {
   USER
   ADMIN
 }
+
+model userTeste {
+    id       String   @id @default(uuid())
+    nomeDoBanco     String
+    senhaDoBanco    String
+}
