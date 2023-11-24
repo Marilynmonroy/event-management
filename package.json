@@ -18,6 +18,7 @@
 		"@sveltejs/kit": "^1.27.6",
 		"@tailwindcss/forms": "0.5.7",
 		"@tailwindcss/typography": "0.5.10",
+		"@types/bcrypt": "^5.0.2",
 		"@types/node": "20.9.4",
 		"@typescript-eslint/eslint-plugin": "^6.12.0",
 		"@typescript-eslint/parser": "^6.12.0",
@@ -40,6 +41,7 @@
 	"dependencies": {
 		"@floating-ui/dom": "1.5.3",
 		"@prisma/client": "5.6.0",
+		"bcrypt": "^5.1.1",
 		"prisma": "^5.6.0"
 	}
 }
