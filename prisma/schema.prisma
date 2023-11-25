@@ -21,8 +21,9 @@ model User {
     phone    String
     address  String
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    userAuthToken String   @unique
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
 
     events Inscription[]
 }
@@ -30,7 +31,7 @@ model User {
 model Event {
     id          Int      @id @default(autoincrement())
     title       String
-    subject     String
+    subject     String //crear table nova
     description String
     location    String
     dateTime    DateTime
@@ -44,10 +45,10 @@ model Inscription {
     id       Int     @id @default(autoincrement())
     presence Boolean
     status   Boolean
-    User     User?   @relation(fields: [userId], references: [id])
-    userId   Int?
-    Event    Event?  @relation(fields: [eventId], references: [id])
-    eventId  Int?
+    User     User    @relation(fields: [userId], references: [id])
+    userId   Int
+    Event    Event   @relation(fields: [eventId], references: [id])
+    eventId  Int
 }
 
 enum Role {
