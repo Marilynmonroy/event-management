@@ -8,8 +8,7 @@ export async function GET() {
 }
 
 export async function POST({ request }) {
-	const { role, name, lastname, email, password, cpf, phone, address, userAuthToken } =
-		await request.json();
+	const { role, name, lastname, email, password, cpf, phone, address } = await request.json();
 
 	const user = await prisma.user.findUnique({
 		where: {
@@ -31,7 +30,7 @@ export async function POST({ request }) {
 			cpf,
 			phone,
 			address,
-			userAuthToken
+			userAuthToken: crypto.randomUUID()
 		}
 	});
 
