@@ -11,13 +11,13 @@ export async function POST({ request, cookies }) {
 	});
 
 	if (!user) {
-		return json({ Credentials: true });
+		return json({ Credentials: 'email incorreto' });
 	}
 
 	const userPassword = await bcrypt.compare(password, user.password);
 
 	if (!userPassword) {
-		return json({ Credentials: true });
+		return json({ Credentials: 'senha incorreta' });
 	}
 
 	const authenticatedUser = await prisma.user.update({
@@ -35,5 +35,5 @@ export async function POST({ request, cookies }) {
 		sameSite: 'strict'
 	});
 
-	return json(`Bem-vinda ${user.name}`);
+	return json(`Bem-vindo ${user.name}`);
 }

@@ -15,9 +15,8 @@ export async function POST({ request }) {
 			email
 		}
 	});
-	//PORTUGUES
 	if (user) {
-		return json('Usuario ya existe');
+		return json('Usuário já cadastrado');
 	}
 
 	const createUser = await prisma.user.create({

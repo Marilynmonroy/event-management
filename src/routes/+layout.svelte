@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
-
 	// Floating UI for Popups
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
@@ -9,12 +8,13 @@
 </script>
 
 <!-- App Shell -->
+
 <AppShell>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<h1 class="h3">Header</h1>
+				<h1 class="font-bold text-3xl">Eventure</h1>
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>

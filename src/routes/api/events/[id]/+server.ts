@@ -11,8 +11,8 @@ export async function GET({ params }) {
 }
 
 export async function PATCH({ request, params }) {
-    const { title, subject, description, location, dateTime, createdAt } = await request.json();
-    const updatedAt = new Date();
+	const { title, category, description, location, dateTime, createdAt } = await request.json();
+	const updatedAt = new Date();
 
 	const updateEvent = await prisma.event.update({
 		where: {
@@ -20,7 +20,7 @@ export async function PATCH({ request, params }) {
 		},
 		data: {
 			title,
-			subject,
+			category,
 			description,
 			location,
 			dateTime,

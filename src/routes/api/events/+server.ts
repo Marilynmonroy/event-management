@@ -7,13 +7,13 @@ export async function GET() {
 }
 
 export async function POST({ request }) {
-	const { title, subject, description, location, dateTime, updatedAt } = await request.json();
-    const createdAt = new Date();
-	
+	const { title, category, description, location, dateTime, updatedAt } = await request.json();
+	const createdAt = new Date();
+
 	const createEvent = await prisma.event.create({
 		data: {
 			title,
-			subject,
+			category,
 			description,
 			location,
 			dateTime,
@@ -22,9 +22,9 @@ export async function POST({ request }) {
 		}
 	});
 
-    if (!createEvent) {
-        return json('Erro ao criar evento!');
-    }
+	if (!createEvent) {
+		return json('Erro ao criar evento!');
+	}
 
 	return json(createEvent, { status: 201 });
 }
