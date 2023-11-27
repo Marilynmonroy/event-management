@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { page } from '$app/stores';
 	import ModalRegister from '$lib/modals/ModalRegister.svelte';
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import {
@@ -13,16 +12,13 @@
 		type ModalComponent,
 		type ModalSettings
 	} from '@skeletonlabs/skeleton';
-	import ModalLogin from '$lib/modals/ModalLogin.svelte';
-	import { enhance } from '$app/forms';
 
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 	initializeStores();
 	const modalStore = getModalStore();
 
 	const modalComponent: Record<string, ModalComponent> = {
-		modalRegistry: { ref: ModalRegister },
-		modalLogin: { ref: ModalLogin }
+		modalRegistry: { ref: ModalRegister }
 	};
 
 	function viewModal() {
@@ -30,14 +26,6 @@
 			type: 'component',
 			component: 'modalRegistry',
 			title: 'Bem-vindo ao Eventure'
-		};
-		modalStore.trigger(modal);
-	}
-	function viewModalLogin() {
-		const modal: ModalSettings = {
-			type: 'component',
-			component: 'modalLogin',
-			title: 'Ingrese a su cuenta'
 		};
 		modalStore.trigger(modal);
 	}
@@ -50,18 +38,11 @@
 		<!-- App Bar -->
 		<AppBar gridColumns="2" gap="2">
 			<svelte:fragment slot="lead">
-				<a href="/" class="font-bold text-3xl">Eventure</a>
 				<div class="justify-end items-end">
-					<a href="/admin" class="btn bg-initial" data-sveltekit-preload-data="hover">
-						Seja admin
-					</a>
-					<button
-						on:click={viewModalLogin}
-						class="btn bg-initial"
-						data-sveltekit-preload-data="hover"
+					<a href="/admin" class="btn bg-initial" data-sveltekit-preload-data="hover"
+						>Seja um admin</a
 					>
-						Accesse sua conta
-					</button>
+					<button class="btn bg-initial"> Accesse sua conta </button>
 					<button on:click={viewModal} class="btn variant-filled-primary">
 						Cadastre-se
 					</button>

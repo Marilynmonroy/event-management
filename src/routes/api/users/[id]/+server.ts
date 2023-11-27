@@ -1,5 +1,6 @@
 import prisma from '$lib/prisma';
 import { json } from '@sveltejs/kit';
+import bcrypt from 'bcrypt';
 
 export async function GET({ params }) {
 	const user = await prisma.user.findUnique({
@@ -22,7 +23,7 @@ export async function PATCH({ request, params }) {
 			name,
 			lastname,
 			email,
-			password,
+			password: await bcrypt.hash(password, 10),
 			cpf,
 			phone,
 			address
