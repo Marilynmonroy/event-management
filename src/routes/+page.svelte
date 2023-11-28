@@ -1,3 +1,5 @@
-<h1>Slot</h1>
+<script>
+	import Carousel from 'svelte-carousel';
+</script>
 
-<a class="btn" href="/teste">vai para o teste</a>
+x

@@ -1,32 +1,36 @@
-<script async script lang="ts">
+<script lang="ts">
 	import type { SvelteComponent } from 'svelte';
-	import { getModalStore } from '@skeletonlabs/skeleton';
+	import { getModalStore, initializeStores } from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
-	const modalStore = getModalStore();
 
 	// Props
 	export let parent: SvelteComponent;
 
+	const modalStore = getModalStore();
+
 	// Form Data
 	const formData = {
-		//	role: Role.ADMIN,
-		name: '',
-		lastname: '',
 		email: '',
-		password: '',
-		cpf: '',
-		phone: '',
-		address: ''
+		password: ''
 	};
 
 	async function onFormSubmit() {
-		const res = await fetch('/api/users', {
+		const res = await fetch('/api/auth', {
 			method: 'POST',
 			body: JSON.stringify(formData)
 		});
 		const data = await res.json();
-		alert(`Usuario cadastrado com exito. Bem-vindo ${data.name}`);
-		goto('/user');
+
+		if (data.role === 'ADMIN') {
+			console.log('Entre en admin');
+			goto('/admin');
+		} else if (data.role === 'USER') {
+			console.log('Entre en user');
+			goto('/user');
+		} else {
+			console.log('Error en el inicio de sesión');
+		}
+
 		if ($modalStore[0].response) $modalStore[0].response(data);
 		modalStore.close();
 	}
@@ -43,46 +47,6 @@
 		</header>
 
 		<form class="modal-form {cForm}">
-			<div class="flex">
-				<label class="label p-4">
-					<span>Nome</span>
-					<input
-						class="input"
-						type="text"
-						bind:value={formData.name}
-						placeholder="Digite o nome..."
-					/>
-				</label>
-				<label class="label p-4">
-					<span>Sobrenome</span>
-					<input
-						class="input"
-						type="text"
-						bind:value={formData.lastname}
-						placeholder="Digite o sobrenome..."
-					/>
-				</label>
-			</div>
-			<div class="flex">
-				<label class="label p-4">
-					<span>CPF</span>
-					<input
-						class="input"
-						type="text"
-						bind:value={formData.cpf}
-						placeholder="Digite o CPF..."
-					/>
-				</label>
-				<label class="label p-4">
-					<span>Telefone</span>
-					<input
-						class="input"
-						type="text"
-						bind:value={formData.phone}
-						placeholder="Digite o telefone..."
-					/>
-				</label>
-			</div>
 			<label class="label p-4">
 				<span>Email</span>
 				<input
@@ -105,7 +69,7 @@
 		<!-- prettier-ignore -->
 		<footer class="modal-footer {parent.regionFooter}">
         <button class="btn {parent.buttonNeutral}" on:click={parent.onClose}>Cancelar</button>
-        <button class="btn {parent.buttonPositive}" on:click={onFormSubmit}>Cadastrar-se</button>
+        <button class="btn {parent.buttonPositive}" on:click={onFormSubmit}>Entrar</button>
     </footer>
 	</div>
 {/if}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.postcss';
-	import ModalRegister from '$lib/modals/ModalRegister.svelte';
+	import ModalRegister from '$lib/components/modals/ModalRegister.svelte';
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import {
 		AppShell,

@@ -1,7 +1,9 @@
 <script lang="ts">
 	import '../app.postcss';
 	import { page } from '$app/stores';
-	import ModalRegister from '$lib/modals/ModalRegister.svelte';
+	import ModalRegister from '$lib/components/modals/ModalRegister.svelte';
+	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import {
 		AppShell,
@@ -13,11 +15,10 @@
 		type ModalComponent,
 		type ModalSettings
 	} from '@skeletonlabs/skeleton';
-	import ModalLogin from '$lib/modals/ModalLogin.svelte';
-	import { enhance } from '$app/forms';
+	import ModalLogin from '$lib/components/modals/ModalLogin.svelte';
 
-	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 	initializeStores();
+
 	const modalStore = getModalStore();
 
 	const modalComponent: Record<string, ModalComponent> = {
@@ -71,5 +72,7 @@
 		</AppBar>
 	</svelte:fragment>
 	<!-- Page Route Content -->
-	<slot />
+	<main class="container w-full flex flex-col">
+		<slot />
+	</main>
 </AppShell>
