@@ -245,19 +245,21 @@
 					class="hover:brightness-125 rounded-md object-cover h-36 rounded-t-xl"
 					alt="imagem do filme"
 				/>
-				<div>
-					<p class="h4 font-semibold p-3">Nome do evento</p>
-					<p>
+				<div class="p-3">
+					<p class="h4 font-semibold pb-3">Nome do evento</p>
+					<p class="text-justify">
 						Um texto aleatorio para testar o tamanho do texto e ver se ele vai quebrar
 						ou não e se vai ficar bonito ou não, que e raro
 					</p>
+					<div class="flex items-center w-full">
+						<p>15/12/2023</p>
+						<ol class="breadcrumb w-full flex justify-end p-3">
+							<li>13:45</li>
+							<li class="crumb-separator" aria-hidden>&rsaquo;</li>
+							<li>15:00</li>
+						</ol>
+					</div>
 				</div>
-				<ol class="breadcrumb w-full flex justify-end p-3">
-					<li>Breadcrumbs</li>
-
-					<li class="crumb-separator" aria-hidden>&rsaquo;</li>
-					<li>Breadcrumbs</li>
-				</ol>
 			</a>
 		{/each}
 	</div>
