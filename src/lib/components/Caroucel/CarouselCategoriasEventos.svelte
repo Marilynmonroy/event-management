@@ -6,6 +6,7 @@
 	import logo3 from '$lib/assets/icons/party-popper.svg';
 	import logo4 from '$lib/assets/icons/hand-metal.svg';
 	import logo5 from '$lib/assets/icons/tent-tree.svg';
+	import logo6 from '$lib/assets/icons/pencil-ruler.svg';
 	function multiColumnLeft(): void {
 		let x = elemMovies.scrollWidth;
 		if (elemMovies.scrollLeft !== 0) x = elemMovies.scrollLeft - elemMovies.clientWidth;
@@ -39,6 +40,10 @@
 		{
 			titulo: 'your mom',
 			logo: logo5
+		},
+		{
+			titulo: 'your mom',
+			logo: logo6
 		}
 	];
 </script>
@@ -54,7 +59,11 @@
 		class="flex snap-x snap-mandatory scroll-smooth overflow-x-auto w-full gap-3 shrink-0 pb-5"
 	>
 		{#each categoriaEventos as movie}
-			<img src={movie.logo} alt="img" class="w-28 rounded-full" />
+			<button
+				type="button"
+				class="btn-icon w-48 variant-filled-surface border-2 border-secondary-500 hover:border-secondary-600"
+				><img src={movie.logo} alt="img" class="w-36" /></button
+			>
 		{/each}
 	</div>
 
