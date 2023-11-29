@@ -72,7 +72,7 @@
 		</AppBar>
 	</svelte:fragment>
 	<!-- Page Route Content -->
-	<main class="container w-full flex flex-col">
+	<main>
 		<slot />
 	</main>
 </AppShell>
