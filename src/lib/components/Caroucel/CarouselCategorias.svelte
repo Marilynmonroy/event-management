@@ -238,11 +238,11 @@
 			<a
 				href={movie.url}
 				target="_blank"
-				class="flex flex-col justify-between card w-[23rem] h-80 snap-center shrink-0"
+				class="flex flex-col justify-between w-[23rem] h-80 snap-center shrink-0 border-2 card border-secondary-500 border-opacity-30"
 			>
 				<img
 					src={movie.imageUrl}
-					class="hover:brightness-125 rounded-md object-cover h-36"
+					class="hover:brightness-125 rounded-md object-cover h-36 rounded-t-xl"
 					alt="imagem do filme"
 				/>
 				<div>
