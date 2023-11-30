@@ -1,8 +1,6 @@
 <script lang="ts">
 	import '../app.postcss';
-	import ModalRegister from '$lib/components/modals/ModalRegister.svelte';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
-
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import {
 		AppShell,
@@ -15,9 +13,9 @@
 		type ModalSettings
 	} from '@skeletonlabs/skeleton';
 	import ModalLogin from '$lib/components/modals/ModalLogin.svelte';
+	import ModalRegister from '$lib/components/modals/ModalRegister.svelte';
 
 	initializeStores();
-
 	const modalStore = getModalStore();
 
 	const modalComponent: Record<string, ModalComponent> = {
@@ -37,7 +35,7 @@
 		const modal: ModalSettings = {
 			type: 'component',
 			component: 'modalLogin',
-			title: 'Ingrese a su cuenta'
+			title: 'Entre na sua conta!'
 		};
 		modalStore.trigger(modal);
 	}

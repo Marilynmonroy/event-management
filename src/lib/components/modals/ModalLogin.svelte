@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { SvelteComponent } from 'svelte';
-	import { getModalStore, initializeStores } from '@skeletonlabs/skeleton';
+	import { getModalStore } from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
 
 	// Props
@@ -66,10 +66,9 @@
 				/>
 			</label>
 		</form>
-		<!-- prettier-ignore -->
 		<footer class="modal-footer {parent.regionFooter}">
-        <button class="btn {parent.buttonNeutral}" on:click={parent.onClose}>Cancelar</button>
-        <button class="btn {parent.buttonPositive}" on:click={onFormSubmit}>Entrar</button>
-    </footer>
+			<button class="btn {parent.buttonNeutral}" on:click={parent.onClose}>Cancelar</button>
+			<button class="btn {parent.buttonPositive}" on:click={onFormSubmit}>Entrar</button>
+		</footer>
 	</div>
 {/if}

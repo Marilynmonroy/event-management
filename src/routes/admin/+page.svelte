@@ -1,7 +1,4 @@
 <script lang="ts">
 </script>
 
-<h1>Admin</h1>
-<form action="/logout" method="POST">
-	<button type="submit">Log out</button>
-</form>
+<h1>AQUI VAI UMA PAGINA DE CADASTRO PARA ADMIN/PRODUTORES DE EVENTOS</h1>

@@ -44,12 +44,12 @@ export async function POST({ request, cookies }) {
 
 	if (user.role === Role.ADMIN) {
 		return json({
-			message: `¡Bienvenido administrador ${user.name}!`,
+			message: `Bem vindo Administrador ${user.name}!`,
 			role: 'ADMIN'
 		});
 	}
 	return json({
-		message: `¡Bienvenido ${user.name}!`,
+		message: `Bem vindo ${user.name}!`,
 		role: 'USER'
 	});
 }

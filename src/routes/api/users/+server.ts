@@ -10,28 +10,36 @@ export async function GET() {
 export async function POST({ request }) {
 	const { role, name, lastname, email, password, cpf, phone, address } = await request.json();
 
-	const user = await prisma.user.findUnique({
+	const userValido = await prisma.user.findUnique({
 		where: {
-			email
-		}
-	});
-	if (user) {
-		return json('Usuário já cadastrado');
-	}
-
-	const createUser = await prisma.user.create({
-		data: {
-			role,
-			name,
-			lastname,
 			email,
-			password: await bcrypt.hash(password, 10),
-			cpf,
-			phone,
-			address,
-			userAuthToken: crypto.randomUUID()
+			cpf
 		}
 	});
+	if (userValido) {
+		return json({
+			message: 'Usuário já existe',
+			status: 400
+		});
+	} else {
+		const createUser = await prisma.user.create({
+			data: {
+				role,
+				name,
+				lastname,
+				email,
+				password: await bcrypt.hash(password, 10),
+				cpf,
+				phone,
+				address,
+				userAuthToken: crypto.randomUUID()
+			}
+		});
 
-	return json(createUser, { status: 201 });
+		return json({
+			message: `Usuário ${name} criado com sucesso!`,
+			user: createUser,
+			status: 201
+		});
+	}
 }

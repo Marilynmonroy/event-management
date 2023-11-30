@@ -3,6 +3,7 @@
 	import { getModalStore, initializeStores } from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
 	const modalStore = getModalStore();
+	initializeStores();
 
 	// Props
 	export let parent: SvelteComponent;
@@ -25,8 +26,10 @@
 			body: JSON.stringify(formData)
 		});
 		const data = await res.json();
-		alert(`Usuario cadastrado com exito. Bem-vindo ${data.name}`);
-		goto('/user');
+		console.log(data);
+		alert(data.message);
+		data.role === 'ADMIN' ? goto('/admin') : goto('/user');
+
 		if ($modalStore[0].response) $modalStore[0].response(data);
 		modalStore.close();
 	}
