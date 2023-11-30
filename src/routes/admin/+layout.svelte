@@ -7,49 +7,34 @@
 		RecursiveTreeView,
 		type TreeViewNode
 	} from '@skeletonlabs/skeleton';
+	import { PartyPopper } from 'lucide-svelte';
 	export let data: LayoutData;
 </script>
 
-<AppShell>
+<AppShell class="h-full">
 	<!-- (header) -->
 	<svelte:fragment slot="sidebarLeft">
-		<TreeView>
+		<TreeView class="variant-ghost-primary w-72 h-full ">
 			<TreeViewItem>
-				Eventos
+				<span class="flex gap-5 items-center"
+					><PartyPopper size={36} color="#1fd99b" /> Eventos</span
+				>
 				<svelte:fragment slot="children">
-					<TreeViewItem>
-						(Child 1)
-						<svelte:fragment slot="children">
-							<TreeViewItem>(Child of Child 1)</TreeViewItem>
-							<TreeViewItem>(Child of Child 2)</TreeViewItem>
-						</svelte:fragment>
-					</TreeViewItem>
+					<TreeViewItem>Novo evento</TreeViewItem>
+					<TreeViewItem>Eventos criados</TreeViewItem>
+				</svelte:fragment>
+			</TreeViewItem>
+			<TreeViewItem>
+				(item 1)
+				<svelte:fragment slot="children">
+					<TreeViewItem>(Child 1)</TreeViewItem>
 					<TreeViewItem>(Child 2)</TreeViewItem>
 				</svelte:fragment>
 			</TreeViewItem>
 			<TreeViewItem>
 				(item 1)
 				<svelte:fragment slot="children">
-					<TreeViewItem>
-						(Child 1)
-						<svelte:fragment slot="children">
-							<TreeViewItem>(Child of Child 1)</TreeViewItem>
-							<TreeViewItem>(Child of Child 2)</TreeViewItem>
-						</svelte:fragment>
-					</TreeViewItem>
-					<TreeViewItem>(Child 2)</TreeViewItem>
-				</svelte:fragment>
-			</TreeViewItem>
-			<TreeViewItem>
-				(item 1)
-				<svelte:fragment slot="children">
-					<TreeViewItem>
-						(Child 1)
-						<svelte:fragment slot="children">
-							<TreeViewItem>(Child of Child 1)</TreeViewItem>
-							<TreeViewItem>(Child of Child 2)</TreeViewItem>
-						</svelte:fragment>
-					</TreeViewItem>
+					<TreeViewItem>(Child 1)</TreeViewItem>
 					<TreeViewItem>(Child 2)</TreeViewItem>
 				</svelte:fragment>
 			</TreeViewItem>
