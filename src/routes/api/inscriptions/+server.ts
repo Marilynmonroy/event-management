@@ -4,15 +4,13 @@ import * as nodemailer from 'nodemailer';
 
 // Endpoint para ver todas las inscripciones
 export async function GET() {
-	// const inscriptions = await prisma.inscription.findMany({
-	// 	include: {
-	// 		User: true,
-	// 		Event: true
-	// 	}
-	// });
-	// return json(inscriptions);
-	sendEmail(9);
-	return json('batata');
+	const inscriptions = await prisma.inscription.findMany({
+		include: {
+			User: true,
+			Event: true
+		}
+	});
+	return json(inscriptions);
 }
 
 // Endpoint para crear una nueva inscripción
