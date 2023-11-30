@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { page } from '$app/stores';
 	import ModalRegister from '$lib/components/modals/ModalRegister.svelte';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
@@ -52,17 +51,9 @@
 		<AppBar gridColumns="2" gap="2">
 			<svelte:fragment slot="lead">
 				<a href="/" class="font-bold text-3xl">Eventure</a>
-				<div class="justify-end items-end">
-					<a href="/admin" class="btn bg-initial" data-sveltekit-preload-data="hover">
-						Seja admin
-					</a>
-					<button
-						on:click={viewModalLogin}
-						class="btn bg-initial"
-						data-sveltekit-preload-data="hover"
-					>
-						Accesse sua conta
-					</button>
+				<div class="flex justify-end items-end">
+					<a href="/admin" class="btn bg-initial"> Seja admin </a>
+					<button on:click={viewModalLogin} class="btn"> Accesse sua conta </button>
 					<button on:click={viewModal} class="btn variant-filled-primary">
 						Cadastre-se
 					</button>
