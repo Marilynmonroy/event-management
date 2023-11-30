@@ -17,7 +17,7 @@ model User {
   cpf           String
   phone         String
   address       String
-  userAuthToken String        @unique
+  userAuthToken String        @unique @default(uuid())
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
   events        Inscription[]
