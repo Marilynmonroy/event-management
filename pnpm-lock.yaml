@@ -369,8 +369,8 @@ packages:
     engines: {node: '>=14'}
     dev: true
 
-  /@floating-ui/core@1.5.0:
-    resolution: {integrity: sha512-kK1h4m36DQ0UHGj5Ah4db7R0rHemTqqO0QLvUqi1/mUUp3LuAWbWxdxSIf/XsnH9VS6rRVPLJCncjRzUvyCLXg==}
+  /@floating-ui/core@1.5.1:
+    resolution: {integrity: sha512-QgcKYwzcc8vvZ4n/5uklchy8KVdjJwcOeI+HnnTNclJjs2nYsy23DOCf+sSV1kBwD9yDAoVKCkv/gEPzgQU3Pw==}
     dependencies:
       '@floating-ui/utils': 0.1.6
     dev: false
@@ -378,7 +378,7 @@ packages:
   /@floating-ui/dom@1.5.3:
     resolution: {integrity: sha512-ClAbQnEqJAKCJOEbbLo5IUlZHkNszqhuxS4fHAVxRPXPya6Ysf2G8KypnYcOTpx6I8xcgF9bbHb6g/2KpbV8qA==}
     dependencies:
-      '@floating-ui/core': 1.5.0
+      '@floating-ui/core': 1.5.1
       '@floating-ui/utils': 0.1.6
     dev: false
 
@@ -972,7 +972,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001565
-      electron-to-chromium: 1.4.597
+      electron-to-chromium: 1.4.598
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.22.1)
     dev: true
@@ -1140,7 +1140,7 @@ packages:
       isarray: 2.0.5
       object-is: 1.1.5
       object-keys: 1.1.1
-      object.assign: 4.1.4
+      object.assign: 4.1.5
       regexp.prototype.flags: 1.5.1
       side-channel: 1.0.4
       which-boxed-primitive: 1.0.2
@@ -1229,8 +1229,8 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /electron-to-chromium@1.4.597:
-    resolution: {integrity: sha512-0XOQNqHhg2YgRVRUrS4M4vWjFCFIP2ETXcXe/0KIQBjXE9Cpy+tgzzYfuq6HGai3hWq0YywtG+5XK8fyG08EjA==}
+  /electron-to-chromium@1.4.598:
+    resolution: {integrity: sha512-0JnipX0scPUlwsptQVCZggoCpREv+IrVD3h0ZG+sldmK9L27tSV3QjV8+QdaA4qQTzDf3PluNS45YYJky1oASw==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -2282,8 +2282,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: false
 
-  /object.assign@4.1.4:
-    resolution: {integrity: sha512-1mxKf0e58bvyjSCtKYY4sRe9itRk3PJpquJOjeIkz885CczcI4IvJJDLPS72oowuSh+pBxUFROpX+TU++hxhZQ==}
+  /object.assign@4.1.5:
+    resolution: {integrity: sha512-byy+U7gp+FVwmyzKPYhW2h5l3crpmGsxl7X2s8y43IgxvG4g3QZ6CffDtsNQy1WsmZpQbO+ybo0AlW7TY6DcBQ==}
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.5
