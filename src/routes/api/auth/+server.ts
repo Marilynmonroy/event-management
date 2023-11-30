@@ -10,6 +10,7 @@ export async function POST({ request, cookies }) {
 			email
 		}
 	});
+	console.log(user.role);
 
 	if (!user) {
 		return json({ Credentials: 'email incorreto' });
