@@ -1,5 +1,8 @@
 import { redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
+
+//-------------- PARA TESTAR SO COMENTA ESTA VALIDACAO------------------
+// ----    QUE O SITE VAI FUNCIONAR SEM VALIDACAO DE USUARIO -----------
 export const load: LayoutServerLoad = ({ locals, cookies }) => {
 	if (!locals.user) {
 		console.log('NAO TEM USUARIO SETADO NO LOCALS NEM COOKIE');
