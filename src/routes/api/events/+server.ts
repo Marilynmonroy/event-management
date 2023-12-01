@@ -7,14 +7,33 @@ export async function GET() {
 }
 
 export async function POST({ request }) {
-	const { title, category, description, location, dateTime, updatedAt } = await request.json();
+	const { title, category, description, image, location, dateTime, updatedAt } =
+		await request.json();
+
 	const createdAt = new Date();
+
+	if (
+		!title ||
+		!category ||
+		!description ||
+		!image ||
+		!location ||
+		!dateTime ||
+		!updatedAt ||
+		!createdAt
+	) {
+		return json({
+			message: 'Todos os campos são obrigatórios',
+			status: 400
+		});
+	}
 
 	const createEvent = await prisma.event.create({
 		data: {
 			title,
 			category,
 			description,
+			image,
 			location,
 			dateTime,
 			createdAt,

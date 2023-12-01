@@ -28,7 +28,12 @@
 		const data = await res.json();
 		console.log(data);
 		alert(data.message);
-		data.role === 'ADMIN' ? goto('/admin') : goto('/user');
+		if (data.status === 400) {
+			console.log(data.status);
+			goto('/');
+		} else {
+			data.role === 'ADMIN' ? goto('/admin') : goto('/user');
+		}
 
 		if ($modalStore[0].response) $modalStore[0].response(data);
 		modalStore.close();

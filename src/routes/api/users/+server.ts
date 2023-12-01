@@ -10,15 +10,28 @@ export async function GET() {
 export async function POST({ request }) {
 	const { role, name, lastname, email, password, cpf, phone, address } = await request.json();
 
+	if (!role || !name || !lastname || !email || !password || !cpf || !phone || !address) {
+		return json({
+			message: 'Todos os campos são obrigatórios',
+			status: 400
+		});
+	}
+
 	const userValido = await prisma.user.findUnique({
 		where: {
 			email,
 			cpf
 		}
 	});
+
 	if (userValido) {
 		return json({
 			message: 'Usuário já existe',
+			status: 400
+		});
+	} else if (!role || !name || !lastname || !email || !password || !cpf || !phone || !address) {
+		return json({
+			message: 'Todos os campos são obrigatórios',
 			status: 400
 		});
 	} else {
