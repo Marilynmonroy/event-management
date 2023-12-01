@@ -24,7 +24,7 @@
 		if (data.role === 'ADMIN') {
 			console.log('Entre en admin');
 			alert('entre en admin');
-			goto('/admin');
+			goto('/admin/criar-evento');
 		} else if (data.role === 'USER') {
 			console.log('Entre en user');
 			alert('entre en user');
@@ -40,7 +40,7 @@
 
 	const cBase = 'card p-4 w-modal shadow-xl space-y-4 p-6';
 	const cHeader = 'text-2xl font-bold text-center p-4';
-	const cForm = 'flex flex-col gap-4';
+	const cForm = 'flex flex-col ';
 </script>
 
 {#if $modalStore[0]}

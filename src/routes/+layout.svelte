@@ -61,7 +61,7 @@
 		</AppBar>
 	</svelte:fragment>
 	<!-- Page Route Content -->
-	<main class="h-full">
+	<main class="h-full w-full">
 		<slot />
 	</main>
 </AppShell>
