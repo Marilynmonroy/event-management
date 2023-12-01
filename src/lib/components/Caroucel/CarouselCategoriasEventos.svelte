@@ -61,7 +61,7 @@
 		{#each categoriaEventos as movie}
 			<button
 				type="button"
-				class="btn-icon w-40 variant-filled-surface border-2 border-secondary-500 hover:border-secondary-600"
+				class="btn-icon w-40 variant-filled-surface border-2 border-secondary-800 hover:border-secondary-500"
 				><img src={movie.logo} alt="img" class="w-32" /></button
 			>
 		{/each}

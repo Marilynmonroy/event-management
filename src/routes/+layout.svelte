@@ -46,7 +46,7 @@
 <AppShell>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
-		<AppBar gridColumns="2" gap="2">
+		<AppBar gridColumns="2" gap="2" class="border-b border-primary-500 border-opacity-50">
 			<svelte:fragment slot="lead">
 				<a href="/" class="font-bold text-3xl">Eventure</a>
 				<div class="flex justify-end items-end">
@@ -61,7 +61,7 @@
 		</AppBar>
 	</svelte:fragment>
 	<!-- Page Route Content -->
-	<main>
+	<main class="h-full">
 		<slot />
 	</main>
 </AppShell>
