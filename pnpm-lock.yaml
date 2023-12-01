@@ -29,9 +29,6 @@ dependencies:
   pdfkit:
     specifier: ^0.14.0
     version: 0.14.0
-  prisma:
-    specifier: ^5.6.0
-    version: 5.6.0
 
 devDependencies:
   '@skeletonlabs/skeleton':
@@ -88,6 +85,9 @@ devDependencies:
   prettier-plugin-svelte:
     specifier: ^3.1.2
     version: 3.1.2(prettier@3.1.0)(svelte@4.2.8)
+  prisma:
+    specifier: ^5.6.0
+    version: 5.6.0
   svelte:
     specifier: ^4.2.8
     version: 4.2.8
@@ -495,7 +495,6 @@ packages:
   /@prisma/engines@5.6.0:
     resolution: {integrity: sha512-Mt2q+GNJpU2vFn6kif24oRSBQv1KOkYaterQsi0k2/lA+dLvhRX6Lm26gon6PYHwUM8/h8KRgXIUMU0PCLB6bw==}
     requiresBuild: true
-    dev: false
 
   /@skeletonlabs/skeleton@2.5.1(svelte@4.2.8):
     resolution: {integrity: sha512-llzzKr6PQV1MUsJybdo3Z0SaVwm00KDf8DKhlVTt3X3fbCjIbS9rK6sLzJKZO01L/cQYtAzdVXv9CxALtIuy0w==}
@@ -2537,7 +2536,6 @@ packages:
     requiresBuild: true
     dependencies:
       '@prisma/engines': 5.6.0
-    dev: false
 
   /punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}

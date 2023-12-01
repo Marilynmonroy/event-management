@@ -1,6 +1,6 @@
 import prisma from '$lib/prisma';
 import { Role } from '@prisma/client';
-import { json } from '@sveltejs/kit';
+import { json, redirect } from '@sveltejs/kit';
 import bcrypt from 'bcrypt';
 
 export async function POST({ request, cookies }) {
@@ -10,16 +10,15 @@ export async function POST({ request, cookies }) {
 			email
 		}
 	});
-	console.log(user.role);
 
 	if (!user) {
-		return json({ Credentials: 'email incorreto' });
+		return json({ Credentials: 'Email incorrecto' });
 	}
 
 	const userPassword = await bcrypt.compare(password, user.password);
 
 	if (!userPassword) {
-		return json({ Credentials: 'senha incorreta' });
+		return json({ Credentials: 'Contraseña incorrecta' });
 	}
 
 	const authenticatedUser = await prisma.user.update({
@@ -45,12 +44,15 @@ export async function POST({ request, cookies }) {
 
 	if (user.role === Role.ADMIN) {
 		return json({
-			message: `Bem vindo Administrador ${user.name}!`,
-			role: 'ADMIN'
+			message: `¡Bienvenido Administrador ${user.name}!`,
+			role: 'ADMIN',
+			throw: redirect(302, '/admin')
 		});
 	}
+
 	return json({
-		message: `Bem vindo ${user.name}!`,
-		role: 'USER'
+		message: `¡Bienvenido ${user.name}!`,
+		role: 'USER',
+		throw: redirect(302, '/user')
 	});
 }

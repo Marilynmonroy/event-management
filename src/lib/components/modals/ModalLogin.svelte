@@ -23,12 +23,15 @@
 
 		if (data.role === 'ADMIN') {
 			console.log('Entre en admin');
+			alert('entre en admin');
 			goto('/admin');
 		} else if (data.role === 'USER') {
 			console.log('Entre en user');
+			alert('entre en user');
 			goto('/user');
 		} else {
-			console.log('Error en el inicio de sesión');
+			console.log('Error');
+			alert('Senha ou email errados');
 		}
 
 		if ($modalStore[0].response) $modalStore[0].response(data);
