@@ -4,4 +4,4 @@
 	export let data: PageData;
 </script>
 
-<h1>PAGINA DE NOVOS EVENTOS</h1>
+<h1>evento Ativossssssssssssssss</h1>
