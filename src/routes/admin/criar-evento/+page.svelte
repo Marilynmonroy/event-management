@@ -26,7 +26,7 @@
 
 <div class="flex flex-col w-full items-center">
 	<h1 class="h2 p-5 font-bold">Bora criar o seu evento?</h1>
-	<form action="?/criarEvento" method="post" class="card flex flex-col p-5 w-2/3 gap-3">
+	<form action="?/criarEvento" method="post" class="card flex flex-col p-5 w-[85%] gap-3">
 		<div class="flex w-full gap-5 items-end">
 			<!------------------------- Titulo do evento -->
 			<label class="label w-1/2">
@@ -85,7 +85,7 @@
 					<span>Inicio do Evento:</span>
 					<input
 						name="inicioEvento"
-						class="input w-20"
+						class="input w-36"
 						title="Input (time)"
 						type="time"
 					/>
@@ -94,7 +94,7 @@
 				<!------------------------- hora do final -->
 				<label class="label flex items-center justify-between">
 					<span>Final do Evento:</span>
-					<input name="finalEvento" class="input w-20" title="Input (time)" type="time" />
+					<input name="finalEvento" class="input w-36" title="Input (time)" type="time" />
 				</label>
 			</div>
 		</div>
