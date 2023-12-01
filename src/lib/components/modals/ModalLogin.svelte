@@ -40,7 +40,7 @@
 
 	const cBase = 'card p-4 w-modal shadow-xl space-y-4 p-6';
 	const cHeader = 'text-2xl font-bold text-center p-4';
-	const cForm = 'border border-surface-500 p-4 space-y-4 rounded-container-token';
+	const cForm = 'flex flex-col gap-4';
 </script>
 
 {#if $modalStore[0]}
