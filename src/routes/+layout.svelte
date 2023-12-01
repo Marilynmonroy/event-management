@@ -14,6 +14,7 @@
 	} from '@skeletonlabs/skeleton';
 	import ModalLogin from '$lib/components/modals/ModalLogin.svelte';
 	import ModalRegister from '$lib/components/modals/ModalRegister.svelte';
+	import type { LayoutData } from './$types';
 
 	initializeStores();
 	const modalStore = getModalStore();
@@ -39,6 +40,8 @@
 		};
 		modalStore.trigger(modal);
 	}
+
+	export let data;
 </script>
 
 <!-- App Shell -->
@@ -49,14 +52,26 @@
 		<AppBar gridColumns="2" gap="2" class="border-b border-primary-500  border-opacity-50">
 			<svelte:fragment slot="lead">
 				<a href="/" class="font-bold text-3xl">Eventure</a>
-				<div class="flex justify-end items-end">
-					<a href="/admin/criar-evento" class="btn bg-initial"> Seja admin </a>
-					<button on:click={viewModalLogin} class="btn"> Accesse sua conta </button>
-					<button on:click={viewModal} class="btn variant-filled-primary">
-						Cadastre-se
-					</button>
-					<Modal components={modalComponent} />
-				</div>
+				{#if data.session === 'GUEST'}
+					<div class="flex justify-end items-end">
+						<a href="/admin/criar-evento" class="btn bg-initial"> Seja admin </a>
+						<button on:click={viewModalLogin} class="btn"> Accesse sua conta </button>
+						<button on:click={viewModal} class="btn variant-filled-primary">
+							Cadastre-se
+						</button>
+						<Modal components={modalComponent} />
+					</div>
+				{:else if data.session === 'USER'}
+					<div class="flex justify-end items-end">
+						<h2>Log out</h2>
+						<h2>Sou user</h2>
+					</div>
+				{:else}
+					<div>
+						<h2>Log out</h2>
+						<h2>sou admin</h2>
+					</div>
+				{/if}
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
