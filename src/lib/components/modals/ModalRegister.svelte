@@ -10,14 +10,13 @@
 
 	// Form Data
 	const formData = {
-		//	role: Role.ADMIN,
+		//	role: Role.ADMIN, ---- nao se passa no front ele e gerado no banco de dados
 		name: '',
 		lastname: '',
 		email: '',
 		password: '',
 		cpf: '',
-		phone: '',
-		address: ''
+		phone: ''
 	};
 
 	async function onFormSubmit() {
@@ -30,23 +29,24 @@
 		alert(data.message);
 		if (data.status === 400) {
 			console.log(data.status);
-			goto('/');
-		} else {
+		} else if (data.status === 201) {
 			data.role === 'ADMIN' ? goto('/admin') : goto('/user');
+			if ($modalStore[0].response) $modalStore[0].response(data);
+			modalStore.close();
+		} else {
+			console.log('deu ruim');
+			console.log(data.status);
 		}
-
-		if ($modalStore[0].response) $modalStore[0].response(data);
-		modalStore.close();
 	}
 
-	const cBase = 'card p-4 w-modal shadow-xl space-y-4 p-6';
-	const cHeader = 'text-2xl font-bold text-center p-4';
-	const cForm = 'border border-surface-500 p-4 space-y-4 rounded-container-token';
+	const cBase = 'card  w-modal shadow-xl p-4 rounded-xl';
+	const cHeader = 'h3 font-bold text-center p-4';
+	const cForm = 'felx flex flex-col';
 </script>
 
 {#if $modalStore[0]}
 	<div class={cBase}>
-		<header class={cHeader}>
+		<header class="{cHeader} text-secondary-500">
 			{$modalStore[0].title ?? '(title missing)'}
 		</header>
 
@@ -110,10 +110,12 @@
 				/>
 			</label>
 		</form>
-		<!-- prettier-ignore -->
-		<footer class="modal-footer {parent.regionFooter}">
-        <button class="btn {parent.buttonNeutral}" on:click={parent.onClose}>Cancelar</button>
-        <button class="btn {parent.buttonPositive}" on:click={onFormSubmit}>Cadastrar-se</button>
-    </footer>
+		<footer class="flex p-2 w-full justify-evenly {parent.regionFooter}">
+			<button class="btn {parent.buttonNeutral}" on:click={parent.onClose}>Cancelar</button>
+			<button
+				class="btn variant-filled-primary {parent.buttonPositive}"
+				on:click={onFormSubmit}>Cadastrar-se</button
+			>
+		</footer>
 	</div>
 {/if}

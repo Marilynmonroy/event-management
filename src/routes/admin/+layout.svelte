@@ -89,12 +89,6 @@
 			</svelte:fragment>
 		</TreeViewItem>
 	</TreeView>
-	<!-- (sidebarRight) -->
-	<!-- (pageHeader) -->
-	<!-- Router Slot -->
-	<!-- ---- / ---- -->
+
 	<slot />
 </div>
-
-<!-- (pageFooter) -->
-<!-- (footer) -->

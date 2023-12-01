@@ -22,27 +22,27 @@
 	}
 	let categoriaEventos = [
 		{
-			titulo: 'your mom',
+			titulo: 'Festivais',
 			logo: logo1
 		},
 		{
-			titulo: 'your mom',
+			titulo: 'Musica ao vivo',
 			logo: logo2
 		},
 		{
-			titulo: 'your mom',
+			titulo: 'Festas',
 			logo: logo3
 		},
 		{
-			titulo: 'your mom',
+			titulo: 'Shows',
 			logo: logo4
 		},
 		{
-			titulo: 'your mom',
+			titulo: 'Camping',
 			logo: logo5
 		},
 		{
-			titulo: 'your mom',
+			titulo: 'Cursos',
 			logo: logo6
 		}
 	];

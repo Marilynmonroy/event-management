@@ -8,14 +8,9 @@ export async function GET() {
 }
 
 export async function POST({ request }) {
-	const { role, name, lastname, email, password, cpf, phone, address } = await request.json();
+	console.log(request);
 
-	if (!role || !name || !lastname || !email || !password || !cpf || !phone || !address) {
-		return json({
-			message: 'Todos os campos são obrigatórios',
-			status: 400
-		});
-	}
+	const { name, lastname, email, password, cpf, phone } = await request.json();
 
 	const userValido = await prisma.user.findUnique({
 		where: {
@@ -24,27 +19,25 @@ export async function POST({ request }) {
 		}
 	});
 
-	if (userValido) {
-		return json({
-			message: 'Usuário já existe',
-			status: 400
-		});
-	} else if (!role || !name || !lastname || !email || !password || !cpf || !phone || !address) {
+	if (!name || !lastname || !email || !password || !cpf || !phone) {
 		return json({
 			message: 'Todos os campos são obrigatórios',
 			status: 400
 		});
-	} else {
+	} else if (userValido) {
+		return json({
+			message: 'Usuário já existe',
+			status: 400
+		});
+	} else if (name || lastname || email || password || cpf || phone || !userValido) {
 		const createUser = await prisma.user.create({
 			data: {
-				role,
 				name,
 				lastname,
 				email,
 				password: await bcrypt.hash(password, 10),
 				cpf,
 				phone,
-				address,
 				userAuthToken: crypto.randomUUID()
 			}
 		});
@@ -53,6 +46,11 @@ export async function POST({ request }) {
 			message: `Usuário ${name} criado com sucesso!`,
 			user: createUser,
 			status: 201
+		});
+	} else {
+		return json({
+			message: 'Erro ao criar usuário',
+			status: 500
 		});
 	}
 }

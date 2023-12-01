@@ -6,6 +6,6 @@ export const load = (async (event) => {
 	} else if (event.cookies.get('session_USER')) {
 		console.log('sou user');
 	} else {
-		console.log('sou host');
+		console.log('sou guest');
 	}
 }) satisfies LayoutServerLoad;

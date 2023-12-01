@@ -16,7 +16,6 @@ model User {
   password      String
   cpf           String
   phone         String
-  address       String
   userAuthToken String        @unique @default(uuid())
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
@@ -34,17 +33,20 @@ model Inscription {
 }
 
 model Event {
-  id          Int           @id @default(autoincrement())
-  title       String
-  description String
-  location    String
-  image       String
-  dateTime    DateTime
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  category    String?
-  categories  Subject?      @relation(fields: [category], references: [name])
-  users       Inscription[]
+  id             Int           @id @default(autoincrement())
+  title          String
+  description    String
+  capacity       Int
+  location       String
+  image          String
+  dataEvent      DateTime
+  beginningEvent DateTime
+  endEvent       DateTime
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  category       String?
+  categories     Subject?      @relation(fields: [category], references: [name])
+  users          Inscription[]
 }
 
 model Subject {
