@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AppShell, ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
+	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 	import type { LayoutData } from './$types';
 	import { TreeView, TreeViewItem } from '@skeletonlabs/skeleton';
 	import { PartyPopper, UserRoundCog } from 'lucide-svelte';

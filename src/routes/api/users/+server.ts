@@ -8,8 +8,6 @@ export async function GET() {
 }
 
 export async function POST({ request }) {
-	console.log(request);
-
 	const { name, lastname, email, password, cpf, phone } = await request.json();
 
 	const userValido = await prisma.user.findUnique({
