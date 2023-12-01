@@ -7,9 +7,18 @@ export async function GET() {
 }
 
 export async function POST({ request }) {
-	const { title, category, description, image, location, dateTime, updatedAt } =
-		await request.json();
-
+	const {
+		title,
+		category,
+		description,
+		image,
+		capacity,
+		location,
+		dataEvent,
+		beginningEvent,
+		endEvent,
+		updatedAt
+	} = await request.json();
 	const createdAt = new Date();
 
 	if (
@@ -17,8 +26,11 @@ export async function POST({ request }) {
 		!category ||
 		!description ||
 		!image ||
+		!capacity ||
 		!location ||
-		!dateTime ||
+		!dataEvent ||
+		!beginningEvent ||
+		!endEvent ||
 		!updatedAt ||
 		!createdAt
 	) {
@@ -33,8 +45,11 @@ export async function POST({ request }) {
 				category,
 				description,
 				image,
+				capacity,
 				location,
-				dateTime,
+				dataEvent,
+				beginningEvent,
+				endEvent,
 				createdAt,
 				updatedAt
 			}
