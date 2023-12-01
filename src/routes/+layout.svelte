@@ -46,11 +46,11 @@
 <AppShell>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
-		<AppBar gridColumns="2" gap="2">
+		<AppBar gridColumns="2" gap="2" class="border-b border-primary-500  border-opacity-50">
 			<svelte:fragment slot="lead">
 				<a href="/" class="font-bold text-3xl">Eventure</a>
 				<div class="flex justify-end items-end">
-					<a href="/admin" class="btn bg-initial"> Seja admin </a>
+					<a href="/admin/eventos-ativos" class="btn bg-initial"> Seja admin </a>
 					<button on:click={viewModalLogin} class="btn"> Accesse sua conta </button>
 					<button on:click={viewModal} class="btn variant-filled-primary">
 						Cadastre-se
@@ -61,7 +61,7 @@
 		</AppBar>
 	</svelte:fragment>
 	<!-- Page Route Content -->
-	<main>
+	<main class="h-full">
 		<slot />
 	</main>
 </AppShell>

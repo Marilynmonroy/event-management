@@ -223,12 +223,12 @@
 	];
 </script>
 
-<div class="flex gap-3 px-16 items-center">
+<div class="flex gap-3 px-16 items-center h-fit">
 	<!-- Button: Left -->
 
 	<button type="button" class="btn-icon h-fit" on:click={multiColumnLeft}>
-		<ChevronLeft strokeWidth={3} size={50} color="#1fd99b" /></button
-	>
+		<ChevronLeft strokeWidth={3} size={50} color="#9477ce" />
+	</button>
 	<!-- Carousel -->
 	<div
 		bind:this={elemMovies}
@@ -238,7 +238,7 @@
 			<a
 				href={movie.url}
 				target="_blank"
-				class="flex flex-col justify-between w-[23rem] h-80 snap-center shrink-0 border-2 card border-secondary-500 border-opacity-30"
+				class="flex flex-col justify-between w-[23rem] h-[21rem] snap-center shrink-0 border card border-primary-500 border-opacity-30"
 			>
 				<img
 					src={movie.imageUrl}
@@ -266,6 +266,6 @@
 
 	<!-- Button-Right -->
 	<button type="button" class="btn-icon h-fit" on:click={multiColumnRight}>
-		<ChevronRight strokeWidth={3} size={50} color="#1fd99b" />
+		<ChevronRight strokeWidth={3} size={50} color="#9477ce" />
 	</button>
 </div>
