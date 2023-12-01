@@ -50,7 +50,7 @@
 			<svelte:fragment slot="lead">
 				<a href="/" class="font-bold text-3xl">Eventure</a>
 				<div class="flex justify-end items-end">
-					<a href="/admin/eventos-ativos" class="btn bg-initial"> Seja admin </a>
+					<a href="/admin/criar-evento" class="btn bg-initial"> Seja admin </a>
 					<button on:click={viewModalLogin} class="btn"> Accesse sua conta </button>
 					<button on:click={viewModal} class="btn variant-filled-primary">
 						Cadastre-se

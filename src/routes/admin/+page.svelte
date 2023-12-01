@@ -1,4 +1,4 @@
 <script lang="ts">
 </script>
 
-<h1>AQUI VAI UMA PAGINA DE CADASTRO PARA ADMIN/PRODUTORES DE EVENTOS</h1>
+<h1>Essa rota nao esta sendo usada</h1>
