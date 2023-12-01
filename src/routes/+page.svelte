@@ -3,7 +3,7 @@
 	import CarouselCategoriasEventos from '$lib/components/Caroucel/CarouselCategoriasEventos.svelte';
 </script>
 
-<div class="flex w-full justify-center">
+<div class="flex w-full justify-center p-5">
 	<CarouselCategoriasEventos />
 </div>
 <CarouselCategorias />

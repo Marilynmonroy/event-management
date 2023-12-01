@@ -13,9 +13,9 @@
 
 <div class="flex h-full">
 	<!-- (header) -->
-	<TreeView class="  h-full w-56 border-r border-primary-500 border-opacity-50 rounded-xl">
+	<TreeView class="flex flex-col min-w-[16rem] max-w-[16rem] card h-full ">
 		<TreeViewItem open>
-			<span class="flex gap-5 items-center text-secondary-500">
+			<span class="flex gap-5 items-center btn text-secondary-500">
 				<PartyPopper size={36} color="#1fd99b" /> Eventos
 			</span>
 			<svelte:fragment slot="children">
@@ -47,6 +47,7 @@
 						bind:group={menuSelecionado}
 						name="listar-eventos"
 						value="listar-eventos"
+						active="variant-ghost-primary"
 						class={$page.url.pathname === '/admin/listar-eventos' &&
 							'variant-ghost-primary'}
 						on:click={() => goto('/admin/listar-eventos')}
@@ -57,20 +58,31 @@
 			</svelte:fragment>
 		</TreeViewItem>
 		<TreeViewItem>
-			<span class="flex gap-5 items-center text-secondary-500"
+			<span class="flex gap-5 items-center btn text-secondary-500"
 				><UserRoundCog size={36} color="#1fd99b" />Conta</span
 			>
 			<svelte:fragment slot="children">
 				<ListBox class=" pr-5">
-					<ListBoxItem bind:group={menuSelecionado} name="medium" value="movies">
-						Eventos Ativos
+					<ListBoxItem
+						bind:group={menuSelecionado}
+						name="usuario"
+						value="usuario"
+						active="variant-ghost-primary"
+						class={$page.url.pathname === '/admin/usuario' && 'variant-ghost-primary'}
+						on:click={() => goto('/admin/usuario')}
+					>
+						Usuario
 					</ListBoxItem>
-					<ListBoxItem bind:group={menuSelecionado} name="medium" value="books">
-						Criar Evento
-					</ListBoxItem>
-
-					<ListBoxItem bind:group={menuSelecionado} name="medium" value="tv">
-						Listar Eventos
+					<ListBoxItem
+						bind:group={menuSelecionado}
+						name="relatorios"
+						value="relatorios"
+						active="variant-ghost-primary"
+						class={$page.url.pathname === '/admin/relatorios' &&
+							'variant-ghost-primary'}
+						on:click={() => goto('/admin/relatorios')}
+					>
+						Relatorios
 					</ListBoxItem>
 				</ListBox>
 			</svelte:fragment>
