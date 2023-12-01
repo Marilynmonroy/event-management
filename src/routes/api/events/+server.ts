@@ -26,24 +26,20 @@ export async function POST({ request }) {
 			message: 'Todos os campos são obrigatórios',
 			status: 400
 		});
+	} else {
+		const createEvent = await prisma.event.create({
+			data: {
+				title,
+				category,
+				description,
+				image,
+				location,
+				dateTime,
+				createdAt,
+				updatedAt
+			}
+		});
+
+		return json(createEvent, { status: 201 });
 	}
-
-	const createEvent = await prisma.event.create({
-		data: {
-			title,
-			category,
-			description,
-			image,
-			location,
-			dateTime,
-			createdAt,
-			updatedAt
-		}
-	});
-
-	if (!createEvent) {
-		return json('Erro ao criar evento!');
-	}
-
-	return json(createEvent, { status: 201 });
 }
