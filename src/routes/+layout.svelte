@@ -14,7 +14,7 @@
 	} from '@skeletonlabs/skeleton';
 	import ModalLogin from '$lib/components/modals/ModalLogin.svelte';
 	import ModalRegister from '$lib/components/modals/ModalRegister.svelte';
-	import type { LayoutData } from './$types';
+	import { LogOut } from 'lucide-svelte';
 
 	initializeStores();
 	const modalStore = getModalStore();
@@ -62,14 +62,17 @@
 						<Modal components={modalComponent} />
 					</div>
 				{:else if data.session === 'USER'}
-					<div class="flex justify-end items-end">
-						<h2>Log out</h2>
+					<div class="flex w-1/6 justify-between items-center">
+						<a href="/admin/criar-evento">Painel Admin</a>
+
 						<h2>Sou user</h2>
+						<a href="/logout"><LogOut /></a>
 					</div>
 				{:else}
-					<div>
-						<h2>Log out</h2>
+					<div class="flex w-1/6 justify-between items-center">
+						<a href="/admin/criar-evento">Painel Admin</a>
 						<h2>sou admin</h2>
+						<a href="/logout"><LogOut /></a>
 					</div>
 				{/if}
 			</svelte:fragment>
