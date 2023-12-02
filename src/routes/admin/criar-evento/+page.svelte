@@ -44,6 +44,7 @@
 				<input
 					class="input"
 					type="text"
+					name="localizacao"
 					placeholder="Ex. Black Rock Desert, estado de Nevada, EUA"
 				/>
 			</label>
@@ -79,7 +80,7 @@
 				</label>
 			</div>
 
-			<div class="flex flex-col w-[20%] gap-1">
+			<div class="flex flex-col w-[30%] gap-1">
 				<!------------------------- hora de inicio -->
 				<label class="label flex items-center justify-between">
 					<span>Inicio do Evento:</span>
