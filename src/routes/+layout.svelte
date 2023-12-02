@@ -63,15 +63,14 @@
 					</div>
 				{:else if data.session === 'USER'}
 					<div class="flex w-1/6 justify-between items-center">
+						<h2 class="h3">Sou user</h2>
 						<a href="/admin/criar-evento">Painel Admin</a>
-
-						<h2>Sou user</h2>
 						<a href="/logout"><LogOut /></a>
 					</div>
 				{:else}
 					<div class="flex w-1/6 justify-between items-center">
+						<h2 class="h3">Sou Admin</h2>
 						<a href="/admin/criar-evento">Painel Admin</a>
-						<h2>sou admin</h2>
 						<a href="/logout"><LogOut /></a>
 					</div>
 				{/if}
