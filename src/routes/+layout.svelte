@@ -15,6 +15,7 @@
 	import ModalLogin from '$lib/components/modals/ModalLogin.svelte';
 	import ModalRegister from '$lib/components/modals/ModalRegister.svelte';
 	import { LogOut } from 'lucide-svelte';
+	import { goto } from '$app/navigation';
 
 	initializeStores();
 	const modalStore = getModalStore();
@@ -39,6 +40,13 @@
 			title: 'Entre na sua conta!'
 		};
 		modalStore.trigger(modal);
+	}
+
+	async function logout() {
+		await fetch('/api/auth', {
+			method: 'GET'
+		});
+		goto('/');
 	}
 
 	export let data;
@@ -69,7 +77,7 @@
 						<a href="/admin/criar-evento" class="btn variant-ghost-primary"
 							>Painel Admin</a
 						>
-						<a href="/logout"><LogOut /></a>
+						<button on:click={logout}><LogOut /></button>
 					</div>
 				{:else}
 					<div class="flex w-[25%] justify-between items-center">
@@ -77,7 +85,7 @@
 						<a href="/admin/criar-evento" class="btn variant-ghost-primary"
 							>Painel Admin</a
 						>
-						<a href="/logout"><LogOut /></a>
+						<button on:click={logout}><LogOut /></button>
 					</div>
 				{/if}
 			</svelte:fragment>

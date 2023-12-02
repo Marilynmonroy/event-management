@@ -56,3 +56,23 @@ export async function POST({ request, cookies }) {
 		throw: redirect(302, '/user')
 	});
 }
+
+export async function GET({ cookies }) {
+	const sessionType = cookies.get('session_USER') ? 'USER' : 'ADMIN';
+
+	cookies.set(`session_${sessionType}`, '', {
+		path: '/',
+		expires: new Date(0)
+	});
+
+	return json({
+		status: 200,
+		body: {
+			message: `Salió ${sessionType}`,
+			redirect: {
+				status: 302,
+				location: sessionType === 'USER' ? '/user' : '/admin'
+			}
+		}
+	});
+}
