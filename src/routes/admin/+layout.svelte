@@ -31,17 +31,6 @@
 					>
 						Criar Evento
 					</ListBoxItem>
-					<ListBoxItem
-						bind:group={menuSelecionado}
-						name="eventos-ativos"
-						value="eventos-ativos"
-						active="variant-ghost-primary"
-						class={$page.url.pathname === '/admin/eventos-ativos' &&
-							'variant-ghost-primary hover:variant-outline-secondary'}
-						on:click={() => goto('/admin/eventos-ativos')}
-					>
-						Eventos Ativos
-					</ListBoxItem>
 
 					<ListBoxItem
 						bind:group={menuSelecionado}
