@@ -53,7 +53,7 @@ export async function POST({ request, cookies }) {
 	return json({
 		message: `¡Bienvenido ${user.name}!`,
 		role: 'USER',
-		throw: redirect(302, '/user')
+		throw: redirect(302, '/')
 	});
 }
 

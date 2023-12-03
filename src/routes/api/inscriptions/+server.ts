@@ -96,7 +96,7 @@ async function sendEmail(inscriptionId: number) {
 		}
 	};
 
-	const eventDate = inscription.Event.dateTime;
+	const eventDate = inscription.Event.dataEvent;
 
 	const formattedDate = new Date(eventDate).toLocaleString('pt-BR', {
 		weekday: 'long',

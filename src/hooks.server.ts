@@ -17,11 +17,12 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	const user = await prisma.user.findUnique({
 		where: { userAuthToken: session },
-		select: { email: true, role: true }
+		select: { id: true, email: true, role: true }
 	});
 
 	if (user) {
 		event.locals.user = {
+			id: user.id,
 			email: user.email,
 			role: user.role
 		};

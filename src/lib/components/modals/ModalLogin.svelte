@@ -28,7 +28,7 @@
 		} else if (data.role === 'USER') {
 			console.log('Entre en user');
 			alert('entre en user');
-			goto('/user');
+			goto('/');
 		} else {
 			console.log('Error');
 			alert('Senha ou email errados');

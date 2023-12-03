@@ -16,6 +16,7 @@
 	import ModalRegister from '$lib/components/modals/ModalRegister.svelte';
 	import { LogOut } from 'lucide-svelte';
 	import { goto } from '$app/navigation';
+	import Avatar from '$lib/components/Avatar/Avatar.svelte';
 
 	initializeStores();
 	const modalStore = getModalStore();
@@ -41,6 +42,7 @@
 		};
 		modalStore.trigger(modal);
 	}
+	export let data;
 
 	async function logout() {
 		await fetch('/api/auth', {
@@ -48,8 +50,6 @@
 		});
 		goto('/');
 	}
-
-	export let data;
 </script>
 
 <!-- App Shell -->
@@ -74,10 +74,7 @@
 				{:else if data.session === 'USER'}
 					<div class="flex w-[25%] justify-between items-center">
 						<h2 class="h3">Sou user</h2>
-						<a href="/admin/criar-evento" class="btn variant-ghost-primary"
-							>Painel Admin</a
-						>
-						<button on:click={logout}><LogOut /></button>
+						<Avatar />
 					</div>
 				{:else}
 					<div class="flex w-[25%] justify-between items-center">
