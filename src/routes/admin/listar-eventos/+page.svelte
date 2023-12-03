@@ -1,9 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton';
+	import {
+		getToastStore,
+		SlideToggle,
+		type PopupSettings,
+		type ToastSettings,
+		popup
+	} from '@skeletonlabs/skeleton';
+	import { PenSquare, XCircle } from 'lucide-svelte';
 	const toastStore = getToastStore();
 
 	let dadosTable: any[] = [];
+	let inscritos = 0;
 
 	onMount(async () => {
 		const res = await fetch('/api/events', {
@@ -25,7 +33,15 @@
 			toastStore.trigger(t);
 		}
 	});
-	let inscritos = 0;
+
+	const popupFeatured: PopupSettings = {
+		// Represents the type of event that opens/closed the popup
+		event: 'click',
+		// Matches the data-popup value on your popup element
+		target: 'popupFeatured',
+		// Defines which side of your trigger the popup will appear
+		placement: 'left'
+	};
 </script>
 
 <div class="flex flex-col overflow-x-auto w-full items-center pt-5">
@@ -33,12 +49,12 @@
 		<!-- head -->
 		<thead>
 			<tr>
-				<th class="w-1/6"></th>
-				<th class="w-1/6">Evento</th>
-				<th class="w-1/6">Dia do evento</th>
-				<th class="w-1/6">Incritos</th>
-				<th class="w-1/6">Status</th>
-				<th class="w-1/6"></th>
+				<th class="w-[16%]"></th>
+				<th class="w-[30%]">Evento</th>
+				<th class="w-[15%]">Dia do evento</th>
+				<th class="w-[10%]">Incritos</th>
+				<th class="w-[10%]">Status</th>
+				<th class="w-[19%]"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -46,19 +62,21 @@
 			{#each dadosTable as evento}
 				<tr class="h-20">
 					<th class="p-2">
-						<img
-							src={evento.image}
-							alt="img evento"
-							class="h-20 rounded-xl object-cover"
-						/>
+						<div class="flex justify-start items-center h-20">
+							<img
+								src={evento.image}
+								alt="img evento"
+								class="h-20 rounded-xl object-cover"
+							/>
+						</div>
 					</th>
-					<td class=" w-1/6">
-						<div class="flex flex-col justify-center items-start">
+					<td class="  h-20">
+						<div class="flex flex-col justify-center h-20">
 							<div class="font-bold text-base">{evento.title}</div>
 							<div class="text-sm opacity-50">{evento.location}</div>
 						</div>
 					</td>
-					<td class="flex items-center w-1/6">
+					<td class="flex items-center h-20">
 						<div class="font-bold text-base">
 							{evento.dataEvent
 								? new Date(evento.dataEvent).toLocaleDateString()
@@ -69,18 +87,43 @@
 							>
 						</div>
 					</td>
-					<td class=" w-1/6">
+					<td class="  h-20">
 						<div class="flex h-full justify-start items-center font-bold text-base">
 							<span>{inscritos}/</span>{evento.capacity}
 						</div>
 					</td>
-					<td class=" w-1/6">
-						<div class="">
-							<input type="checkbox" class="toggle toggle-success" checked />
+					<td class="  h-20">
+						<div class="flex justify-start items-center h-20">
+							{#if evento.status}
+								<span class="badge variant-filled-secondary">Ativo</span>
+							{:else}
+								<span class="badge variant-ringed-error">Inativo</span>
+							{/if}
 						</div>
 					</td>
-					<th class="w-1/6">
-						<button class="">details</button>
+					<th class=" h-20">
+						<div class="flex justify-center items-center">
+							<button class="btn variant-filled" use:popup={popupFeatured}>
+								Show Popup
+							</button>
+						</div>
+						<div class="card p-4 w-40 shadow-xl" data-popup="popupFeatured">
+							<div class="flex flex-col gap-2">
+								<button type="button" class="btn variant-filled">
+									<span><PenSquare /> </span>
+									<span>Editar</span>
+								</button>
+								<button type="button" class="btn variant-filled">
+									<span><XCircle /> </span>
+									<span>Deletar</span>
+								</button>
+
+								<button type="button" class="btn variant-filled">
+									<span>(icon)</span>
+									<span>Button</span>
+								</button>
+							</div>
+						</div>
 					</th>
 				</tr>
 			{/each}
