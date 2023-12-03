@@ -1,61 +1,61 @@
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-    id            Int           @id @default(autoincrement())
-    role          Role          @default(USER)
-    name          String
-    lastname      String
-    email         String        @unique
-    password      String
-    cpf           String
-    phone         String
-    userAuthToken String        @unique @default(uuid())
-    createdAt     DateTime      @default(now())
-    updatedAt     DateTime      @updatedAt
-    events        Inscription[]
+  id            Int           @id @default(autoincrement())
+  role          Role          @default(USER)
+  name          String
+  lastname      String
+  email         String        @unique
+  password      String
+  cpf           String
+  phone         String
+  userAuthToken String        @unique @default(uuid())
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  events        Inscription[]
 }
 
 model Inscription {
-    id       Int     @id @default(autoincrement())
-    presence Boolean
-    status   Boolean
-    userId   Int
-    eventId  Int
-    Event    Event   @relation(fields: [eventId], references: [id])
-    User     User    @relation(fields: [userId], references: [id])
+  id       Int     @id @default(autoincrement())
+  presence Boolean
+  status   Boolean
+  userId   Int
+  eventId  Int
+  Event    Event   @relation(fields: [eventId], references: [id])
+  User     User    @relation(fields: [userId], references: [id])
 }
 
 model Event {
-    id             Int           @id @default(autoincrement())
-    title          String
-    description    String
-    capacity       Int
-    location       String
-    image          String
-    dataEvent      DateTime
-    beginningEvent DateTime
-    endEvent       DateTime
-    createdAt      DateTime      @default(now())
-    updatedAt      DateTime      @updatedAt
-    category       String?
-    categories     Subject?      @relation(fields: [category], references: [name])
-    users          Inscription[]
+  id             Int           @id @default(autoincrement())
+  title          String
+  description    String
+  capacity       Int
+  location       String
+  image          String
+  dataEvent      String
+  beginningEvent String
+  endEvent       String
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  category       String?
+  categories     Subject?      @relation(fields: [category], references: [name])
+  users          Inscription[]
 }
 
 model Subject {
-    id    Int     @id @default(autoincrement())
-    name  String  @unique
-    Event Event[]
+  id    Int     @id @default(autoincrement())
+  name  String  @unique
+  Event Event[]
 }
 
 enum Role {
-    USER
-    ADMIN
+  USER
+  ADMIN
 }
