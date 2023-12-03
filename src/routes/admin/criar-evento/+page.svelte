@@ -66,7 +66,7 @@
 
 		<div class="flex justify-between">
 			<!------------------------- categoria do evento -->
-			<label class="label w-1/3">
+			<label class="label w-1/4 2xl:w-[50%]">
 				<span>Categoria:</span>
 				<select name="categoria" class="select">
 					<option value hidden>selecione uma categoria...</option>
@@ -77,16 +77,16 @@
 			</label>
 			<div class="flex flex-col w-[30%] gap-1">
 				<!------------------------- data inicio -->
-				<label class="label flex items-center justify-between w-full">
-					<span class="w-full">Dia do evento:</span>
-					<input name="diaEvento" class="input w-full" title="Input (date)" type="date" />
+				<label class="label flex items-center justify-end w-full gap-2">
+					<span>Dia do evento:</span>
+					<input name="diaEvento" class="input w-40" title="Input (date)" type="date" />
 				</label>
 				<!--------------------------- CAPACIDADE maxima -->
-				<label class="label flex items-center justify-between">
+				<label class="label flex items-center justify-end gap-2">
 					<span>Capacidade maxima:</span>
 					<input
 						name="capacidadeMaxima"
-						class="input w-36 text-center"
+						class="input w-24 text-center"
 						title="Input (number)"
 						type="number"
 						placeholder="&infin;"
@@ -96,7 +96,7 @@
 
 			<div class="flex flex-col w-[30%] gap-1">
 				<!------------------------- hora de inicio -->
-				<label class="label flex items-center justify-between">
+				<label class="label flex items-center justify-end gap-3">
 					<span>Inicio do Evento:</span>
 					<input
 						name="inicioEvento"
@@ -107,7 +107,7 @@
 				</label>
 
 				<!------------------------- hora do final -->
-				<label class="label flex items-center justify-between">
+				<label class="label flex items-center justify-end gap-3">
 					<span>Final do Evento:</span>
 					<input name="finalEvento" class="input w-36" title="Input (time)" type="time" />
 				</label>
