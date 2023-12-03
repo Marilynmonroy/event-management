@@ -1,17 +1,8 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
-	import {
-		Table,
-		tableMapperValues,
-		tableSourceMapper,
-		type TableSource,
-		type ToastSettings
-	} from '@skeletonlabs/skeleton';
-	import { getToastStore } from '@skeletonlabs/skeleton';
+	import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	const toastStore = getToastStore();
 
-	export let data: PageData;
 	let dadosTable: any[] = [];
 
 	onMount(async () => {
@@ -34,29 +25,75 @@
 			toastStore.trigger(t);
 		}
 	});
-
-	const sourceData = [
-		{ position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-		{ position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-		{ position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-		{ position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-		{ position: 5, name: 'Boron', weight: 10.811, symbol: 'B' }
-	];
-
-	const tableSimple: TableSource = {
-		// A list of heading labels.
-		head: ['Name', 'Symbol', 'Weight'],
-		// The data visibly shown in your table body UI.
-		body: tableMapperValues(sourceData, ['name', 'symbol', 'weight']),
-		// Optional: The data returned when interactive is enabled and a row is clicked.
-		meta: tableMapperValues(sourceData, ['position', 'name', 'symbol', 'weight']),
-		// Optional: A list of footer labels.
-		foot: ['Total', '', '<code class="code">5</code>']
-	};
+	let inscritos = 0;
 </script>
 
-{#if dadosTable.length > 0}
-	<Table source={tableSimple} />
-{:else if dadosTable.length <= 0}
-	<p class="text-center text-2xl font-bold text-secondary-500">Nenhum evento cadastrado</p>
-{/if}
+<div class="flex flex-col overflow-x-auto w-full items-center pt-5">
+	<table class="table w-11/12">
+		<!-- head -->
+		<thead>
+			<tr>
+				<th class="w-1/6"></th>
+				<th class="w-1/6">Evento</th>
+				<th class="w-1/6">Dia do evento</th>
+				<th class="w-1/6">Incritos</th>
+				<th class="w-1/6">Status</th>
+				<th class="w-1/6"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- row 1 -->
+			{#each dadosTable as evento}
+				<tr class="h-20">
+					<th class="p-2">
+						<img
+							src={evento.image}
+							alt="img evento"
+							class="h-20 rounded-xl object-cover"
+						/>
+					</th>
+					<td class=" w-1/6">
+						<div class="flex flex-col justify-center items-start">
+							<div class="font-bold text-base">{evento.title}</div>
+							<div class="text-sm opacity-50">{evento.location}</div>
+						</div>
+					</td>
+					<td class="flex items-center w-1/6">
+						<div class="font-bold text-base">
+							{evento.dataEvent
+								? new Date(evento.dataEvent).toLocaleDateString()
+								: 'Erro na data'}
+							<br />
+							<span class="flex w-full text-xs text-gray-400"
+								>{evento.beginningEvent} > {evento.endEvent}</span
+							>
+						</div>
+					</td>
+					<td class=" w-1/6">
+						<div class="flex h-full justify-start items-center font-bold text-base">
+							<span>{inscritos}/</span>{evento.capacity}
+						</div>
+					</td>
+					<td class=" w-1/6">
+						<div class="">
+							<input type="checkbox" class="toggle toggle-success" checked />
+						</div>
+					</td>
+					<th class="w-1/6">
+						<button class="">details</button>
+					</th>
+				</tr>
+			{/each}
+		</tbody>
+		<!-- foot -->
+		<tfoot>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Job</th>
+				<th>Favorite Color</th>
+				<th></th>
+			</tr>
+		</tfoot>
+	</table>
+</div>
