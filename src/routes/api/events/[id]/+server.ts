@@ -11,7 +11,17 @@ export async function GET({ params }) {
 }
 
 export async function PATCH({ request, params }) {
-	const { title, category, description, location, dateTime, createdAt } = await request.json();
+	const {
+		title,
+		category,
+		description,
+		location,
+		capacity,
+		dataEvent,
+		beginningEvent,
+		endEvent,
+		createdAt
+	} = await request.json();
 	const updatedAt = new Date();
 
 	const updateEvent = await prisma.event.update({
@@ -23,7 +33,10 @@ export async function PATCH({ request, params }) {
 			category,
 			description,
 			location,
-			dateTime,
+			capacity,
+			dataEvent,
+			beginningEvent,
+			endEvent,
 			createdAt,
 			updatedAt
 		}

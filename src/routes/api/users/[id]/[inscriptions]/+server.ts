@@ -7,7 +7,11 @@ export async function GET({ params }) {
 			id: Number(params.id)
 		},
 		include: {
-			events: true
+			events: {
+				include: {
+					Event: true
+				}
+			}
 		}
 	});
 	return json(userInscriptions);

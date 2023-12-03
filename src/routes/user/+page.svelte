@@ -1,4 +1,5 @@
 <script lang="ts">
+	export let data;
 </script>
 
-<h1>AQUI VAI USER</h1>
+<p>{data.users}</p>

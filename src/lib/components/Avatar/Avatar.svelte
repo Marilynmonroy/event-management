@@ -23,11 +23,16 @@
 		goto('/');
 	}
 
+	async function userId() {
+		const res = await fetch(`/api/users/${userId}`, {
+			method: 'GET'
+		});
+		const userData = await res.json();
+		goto(`user/${userData.id}`);
+	}
+
 	function ingresos() {
 		goto('/user/meus-ingressos');
-	}
-	function conta() {
-		goto('/user/conta');
 	}
 </script>
 
@@ -41,7 +46,7 @@
 		<ListBoxItem bind:group={value} on:click={ingresos} name="medium" value="ingresos"
 			>Ingressos</ListBoxItem
 		>
-		<ListBoxItem bind:group={value} on:click={conta} name="medium" value="conta"
+		<ListBoxItem bind:group={value} on:click={userId} name="medium" value="conta"
 			>Minha conta</ListBoxItem
 		>
 		<ListBoxItem bind:group={value} on:click={logout} name="medium" value="logout"

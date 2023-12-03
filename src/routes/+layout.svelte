@@ -16,7 +16,7 @@
 	import ModalRegister from '$lib/components/modals/ModalRegister.svelte';
 	import { LogOut } from 'lucide-svelte';
 	import { goto } from '$app/navigation';
-	import Avatar from '$lib/components/Avatar/Avatar.svelte';
+	import Avatar from '../lib/components/Avatar/Avatar.svelte';
 
 	initializeStores();
 	const modalStore = getModalStore();
@@ -43,7 +43,6 @@
 		modalStore.trigger(modal);
 	}
 	export let data;
-
 	async function logout() {
 		await fetch('/api/auth', {
 			method: 'GET'

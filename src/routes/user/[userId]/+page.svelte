@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
+	export let data;
+	const userId = data.user;
+	console.log(userId);
+
 	let formData = {
 		name: '',
 		lastname: '',
@@ -11,21 +15,20 @@
 
 	async function fetchData() {
 		try {
-			const res = await fetch(`/api/users/${1}`);
+			const res = await fetch(`/api/users/${userId}`);
 			const userData = await res.json();
 			formData = { ...userData };
 		} catch (error) {
 			console.error('Error al obtener los datos del usuario:', error);
 		}
 	}
-
 	onMount(() => {
 		fetchData();
 	});
 
 	async function onFormSubmit() {
 		try {
-			const res = await fetch(`/api/users/${1}`, {
+			const res = await fetch(`/api/users/${userId}`, {
 				method: 'PATCH',
 				body: JSON.stringify(formData)
 			});

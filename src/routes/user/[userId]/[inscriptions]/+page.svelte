@@ -1,7 +1,10 @@
 <script lang="ts">
 	import Cards from '$lib/components/Cards/Cards.svelte';
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
+	export let data;
 	let tabSet: number = 0;
+	let inscriptions = data.inscription;
+	console.log(data.inscription);
 </script>
 
 <div class="m-20">
@@ -13,15 +16,17 @@
 		<Tab bind:group={tabSet} name="encerrado" value={1}>Encerrados</Tab>
 		<svelte:fragment slot="panel">
 			{#if tabSet === 0}
-				<Cards
-					title="Hola"
-					location="Lajeado"
-					dataEvent="Hoy"
-					beginningEvent="10:30"
-					endEvent="12:30"
-				/>
+				{#each inscriptions as inscription (inscription.id)}
+					<Cards
+						title={inscription.title}
+						location={inscription.location}
+						dataEvent={inscription.dataEvent}
+						beginningEvent={inscription.beginningEvent}
+						endEvent={inscription.endEvent}
+					/>
+				{/each}
 			{:else if tabSet === 1}
-				(ingressos inativos)
+				<p>Ingresos inactivos</p>
 			{/if}
 		</svelte:fragment>
 	</TabGroup>
