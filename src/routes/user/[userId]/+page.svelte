@@ -2,7 +2,6 @@
 	import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
 	const toastStore = getToastStore();
-
 	export let data;
 	const userId = data.user;
 	console.log(userId);
@@ -14,6 +13,26 @@
 		cpf: '',
 		phone: ''
 	};
+
+	async function onFormSubmit() {
+		try {
+			const res = await fetch(`/api/users/${3}`, {
+				method: 'PATCH',
+				body: JSON.stringify(formData)
+			});
+			const data = await res.json();
+			console.log(data);
+			const t: ToastSettings = {
+				message: `Usuário atualizado com sucesso!`,
+				timeout: 3000,
+				background: 'variant-ghost-secondary'
+			};
+			toastStore.trigger(t);
+			window.location.reload();
+		} catch (error) {
+			console.error('Error al enviar los datos:', error);
+		}
+	}
 
 	async function fetchData() {
 		try {
@@ -27,25 +46,6 @@
 	onMount(() => {
 		fetchData();
 	});
-
-	async function onFormSubmit() {
-		try {
-			const res = await fetch(`/api/users/${userId}`, {
-				method: 'PATCH',
-				body: JSON.stringify(formData)
-			});
-			const data = await res.json();
-			console.log(data);
-			const t: ToastSettings = {
-				message: `Chau!`,
-				timeout: 3000,
-				background: 'variant-ghost-secondary'
-			};
-			toastStore.trigger(t);
-		} catch (error) {
-			console.error('Error al enviar los datos:', error);
-		}
-	}
 </script>
 
 <div class="flex flex-col w-full items-center">
