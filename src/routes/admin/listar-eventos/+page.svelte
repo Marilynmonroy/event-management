@@ -171,7 +171,7 @@
 			{/each}
 		</tbody>
 		<!-- foot -->
-		<tfoot>
+		<!-- <tfoot>
 			<tr>
 				<th></th>
 				<th>Name</th>
@@ -179,6 +179,6 @@
 				<th>Favorite Color</th>
 				<th></th>
 			</tr>
-		</tfoot>
+		</tfoot> -->
 	</table>
 </div>
