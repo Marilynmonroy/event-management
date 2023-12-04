@@ -33,7 +33,7 @@
 		const data = await res.json();
 		console.log(data);
 		const t: ToastSettings = {
-			message: `Usuário cadastrado com sucesso!`,
+			message: `Usuário cadastrado com sucesso, lembre-se de accesar a sua conta!`,
 			timeout: 3000,
 			background: 'variant-ghost-secondary'
 		};
