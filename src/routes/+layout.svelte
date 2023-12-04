@@ -64,24 +64,19 @@
 			<svelte:fragment slot="lead">
 				<a href="/" class="font-bold text-3xl">Eventure</a>
 				{#if data.session === 'GUEST'}
-					<div class="flex w-[35%] justify-between items-center">
-						<a href="/admin/criar-evento" class="btn variant-ghost-primary">
-							Painel Admin
-						</a>
+					<div class="flex w-[20%] justify-between items-center">
 						<button on:click={viewModalLogin} class="btn"> Accesse sua conta </button>
-						<button on:click={viewModal} class="btn variant-filled-primary">
+						<button on:click={viewModal} class="btn variant-ghost-primary">
 							Cadastre-se
 						</button>
 						<Modal components={modalComponent} />
 					</div>
 				{:else if data.session === 'USER'}
 					<div class="flex w-[25%] justify-between items-center">
-						<h2 class="h3">Sou user</h2>
 						<Avatar />
 					</div>
-				{:else}
+				{:else if data.session === 'ADMIN'}
 					<div class="flex w-[25%] justify-between items-center">
-						<h2 class="h3">Sou Admin</h2>
 						<a href="/admin/criar-evento" class="btn variant-ghost-primary"
 							>Painel Admin</a
 						>
