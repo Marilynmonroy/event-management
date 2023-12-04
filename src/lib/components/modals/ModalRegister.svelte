@@ -1,9 +1,15 @@
 <script async script lang="ts">
 	import type { SvelteComponent } from 'svelte';
-	import { getModalStore, initializeStores } from '@skeletonlabs/skeleton';
+	import {
+		getModalStore,
+		getToastStore,
+		initializeStores,
+		type ToastSettings
+	} from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
 	const modalStore = getModalStore();
 	initializeStores();
+	const toastStore = getToastStore();
 
 	// Props
 	export let parent: SvelteComponent;
@@ -26,7 +32,14 @@
 		});
 		const data = await res.json();
 		console.log(data);
-		alert(data.message);
+		const t: ToastSettings = {
+			message: `Usuário cadastrado com sucesso!`,
+			timeout: 3000,
+			background: 'variant-ghost-secondary'
+		};
+		toastStore.trigger(t);
+		goto('/admin/criar-evento');
+		window.location.reload();
 		if (data.status === 400) {
 			console.log(data.status);
 		} else if (data.status === 201) {
