@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
+	const toastStore = getToastStore();
 
 	export let data;
 	const userId = data.user;
@@ -34,7 +36,12 @@
 			});
 			const data = await res.json();
 			console.log(data);
-			alert('Usuario Editado');
+			const t: ToastSettings = {
+				message: `Chau!`,
+				timeout: 3000,
+				background: 'variant-ghost-secondary'
+			};
+			toastStore.trigger(t);
 		} catch (error) {
 			console.error('Error al enviar los datos:', error);
 		}
