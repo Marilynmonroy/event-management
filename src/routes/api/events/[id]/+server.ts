@@ -20,9 +20,9 @@ export async function PATCH({ request, params }) {
 		dataEvent,
 		beginningEvent,
 		endEvent,
-		createdAt
+		image,
+		status
 	} = await request.json();
-	const updatedAt = new Date();
 
 	const updateEvent = await prisma.event.update({
 		where: {
@@ -30,15 +30,15 @@ export async function PATCH({ request, params }) {
 		},
 		data: {
 			title,
-			category,
-			description,
 			location,
-			capacity,
+			category,
+			capacity: Number(capacity),
 			dataEvent,
 			beginningEvent,
 			endEvent,
-			createdAt,
-			updatedAt
+			description,
+			image,
+			status
 		}
 	});
 

@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { PencilLine, XCircle } from 'lucide-svelte';
-	import { redirect } from '@sveltejs/kit';
 
 	const toastStore = getToastStore();
 
@@ -54,7 +53,51 @@
 			toastStore.trigger(t);
 		}
 	}
+	// ----------------------------------------------------------------------------
+
+	async function editarEvento(id: string) {
+		// const res = await fetch(`/api/events/${id}`, {
+		// 	method: 'PATCH'
+		// });
+		showModal = true;
+	}
+	import Modal from '$lib/components/modals/ModalEditar.svelte';
+
+	let showModal = false;
 </script>
+
+<Modal bind:showModal>
+	<form action="" class="">
+		<label class="label">
+			<span class="text-white">Input</span>
+			<input class="input" type="text" placeholder="Input" />
+		</label>
+
+		<label class="label">
+			<span>Select</span>
+			<select class="select">
+				<option value="1">Option 1</option>
+				<option value="2">Option 2</option>
+				<option value="3">Option 3</option>
+				<option value="4">Option 4</option>
+				<option value="5">Option 5</option>
+			</select>
+		</label>
+
+		<label class="label">
+			<span>Textarea</span>
+			<textarea
+				class="textarea"
+				rows="4"
+				placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+			/>
+		</label>
+		<div class="w-full">
+			<!-- <button class="btn">Cancelar</button> -->
+			<button type="submit" class="btn variant-ghost-secondary">Salvar</button>
+		</div>
+	</form>
+</Modal>
 
 <div class="flex flex-col overflow-x-auto w-full items-center pt-5">
 	<table class="table w-11/12">
@@ -116,7 +159,7 @@
 					</td>
 					<th class=" h-20">
 						<div class="flex justify-evenly items-center gap-6">
-							<button>
+							<button on:click={() => editarEvento(evento.id)}>
 								<PencilLine size={32} />
 							</button>
 							<button on:click={() => deletarEvento(evento.id)}>
