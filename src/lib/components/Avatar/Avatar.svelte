@@ -29,8 +29,8 @@
 			background: 'variant-ghost-secondary'
 		};
 		toastStore.trigger(t);
-		window.location.reload();
 		goto('/');
+		window.location.reload();
 	}
 
 	async function userId(id: string) {

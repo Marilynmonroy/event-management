@@ -48,8 +48,8 @@
 		await fetch('/api/auth', {
 			method: 'GET'
 		});
-		window.location.reload();
 		goto('/');
+		window.location.reload();
 	}
 </script>
 
