@@ -43,7 +43,7 @@
 		if (data.status === 400) {
 			console.log(data.status);
 		} else if (data.status === 201) {
-			data.role === 'ADMIN' ? goto('/admin') : goto('/user');
+			data.role === 'ADMIN' ? goto('/admin') : goto('/');
 			if ($modalStore[0].response) $modalStore[0].response(data);
 			modalStore.close();
 		} else {
