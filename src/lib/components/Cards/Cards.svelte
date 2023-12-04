@@ -15,8 +15,8 @@
 		<div class="p-4 space-y-4">
 			<h2 class="font-semibold text-lg" data-toc-ignore>{title}</h2>
 			<p>{location}</p>
-			<div class="flex items-center w-full">
-				<p>{dataEvent}</p>
+			<div class="flex items-center w-full text-sm">
+				<p class="text-sm">{dataEvent}</p>
 				<ol class="breadcrumb w-full flex justify-end p-3">
 					<li>{beginningEvent}</li>
 					<li class="crumb-separator" aria-hidden>&rsaquo;</li>

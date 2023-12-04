@@ -24,7 +24,7 @@
 			method: 'GET'
 		});
 		const t: ToastSettings = {
-			message: `Bemvindo admin!`,
+			message: `Chau!`,
 			timeout: 3000,
 			background: 'variant-ghost-secondary'
 		};
