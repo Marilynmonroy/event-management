@@ -15,7 +15,7 @@
 
 	async function fetchData() {
 		try {
-			const res = await fetch(`/api/users/${userId}`);
+			const res = await fetch(`/api/users/${3}`);
 			const userData = await res.json();
 			formData = { ...userData };
 		} catch (error) {

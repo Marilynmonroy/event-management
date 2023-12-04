@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { SvelteComponent } from 'svelte';
+	import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { getModalStore } from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
 
@@ -7,6 +8,7 @@
 	export let parent: SvelteComponent;
 
 	const modalStore = getModalStore();
+	const toastStore = getToastStore();
 
 	// Form Data
 	const formData = {
@@ -23,12 +25,24 @@
 
 		if (data.role === 'ADMIN') {
 			console.log('Entre en admin');
-			alert('entre en admin');
+			const t: ToastSettings = {
+				message: `Bemvindo admin!`,
+				timeout: 3000,
+				background: 'variant-ghost-secondary'
+			};
+			toastStore.trigger(t);
 			goto('/admin/criar-evento');
+			window.location.reload();
 		} else if (data.role === 'USER') {
 			console.log('Entre en user');
-			alert('entre en user');
+			const t: ToastSettings = {
+				message: `Bemvindo user!`,
+				timeout: 3000,
+				background: 'variant-ghost-secondary'
+			};
+			toastStore.trigger(t);
 			goto('/');
+			window.location.reload();
 		} else {
 			console.log('Error');
 			alert('Senha ou email errados');

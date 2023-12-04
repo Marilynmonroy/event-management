@@ -4,9 +4,10 @@ export const load = async (loadEvent) => {
 
 	const { userId } = params;
 	const res = await fetch(`/api/users/${userId}`);
-	const user = await res.json();
+	const data = await res.json();
+	const user = data;
 
 	return {
-		user: user.id
+		user
 	};
 };

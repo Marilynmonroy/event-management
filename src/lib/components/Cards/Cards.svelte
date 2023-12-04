@@ -1,4 +1,5 @@
 <script lang="ts">
+	export let image: string;
 	export let title: string;
 	export let location: string;
 	export let dataEvent: string;
@@ -9,7 +10,7 @@
 <div class="card w-1/4">
 	<a href="/" class="card-hover overflow-hidden">
 		<header class="font-black text-2xl p-4">
-			<h1>Imagen</h1>
+			<img src={image} alt="img evento" class="rounded-xl object-cover" />
 		</header>
 		<div class="p-4 space-y-4">
 			<h2 class="font-semibold text-lg" data-toc-ignore>{title}</h2>

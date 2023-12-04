@@ -48,6 +48,7 @@
 		await fetch('/api/auth', {
 			method: 'GET'
 		});
+		window.location.reload();
 		goto('/');
 	}
 </script>
