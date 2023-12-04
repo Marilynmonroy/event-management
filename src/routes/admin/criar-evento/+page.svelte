@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { FileDropzone } from '@skeletonlabs/skeleton';
-	import type { ActionData, PageData } from './$types';
+	import type { PageData } from './$types';
 	import { FileUp } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 	import { enhance } from '$app/forms';
