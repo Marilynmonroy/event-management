@@ -67,7 +67,6 @@
 
 <div class="card w-48 shadow-xl py-2" data-popup="popupCombobox">
 	<ListBox rounded="rounded-none">
-		<button></button>
 		<ListBoxItem
 			bind:group={value}
 			on:click={() => ingresos('3')}

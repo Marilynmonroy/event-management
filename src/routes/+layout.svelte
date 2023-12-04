@@ -72,13 +72,13 @@
 						<Modal components={modalComponent} />
 					</div>
 				{:else if data.session === 'USER'}
-					<div class="flex w-[25%] justify-between items-center">
+					<div class="flex">
 						<Avatar />
 					</div>
 				{:else if data.session === 'ADMIN'}
-					<div class="flex w-[25%] justify-between items-center">
-						<a href="/admin/criar-evento" class="btn variant-ghost-primary"
-							>Painel Admin</a
+					<div class="flex w-[15%] justify-between items-center pr-4">
+						<a href="/admin/criar-evento" class="btn variant-ghost-primary">
+							Painel Admin</a
 						>
 						<button on:click={logout}><LogOut /></button>
 					</div>
