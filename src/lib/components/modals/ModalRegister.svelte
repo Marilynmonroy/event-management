@@ -1,15 +1,9 @@
 <script async script lang="ts">
 	import type { SvelteComponent } from 'svelte';
-	import {
-		getModalStore,
-		getToastStore,
-		initializeStores,
-		type ToastSettings
-	} from '@skeletonlabs/skeleton';
+	import { getModalStore, initializeStores } from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
 	const modalStore = getModalStore();
 	initializeStores();
-	const toastStore = getToastStore();
 
 	// Props
 	export let parent: SvelteComponent;
@@ -32,18 +26,11 @@
 		});
 		const data = await res.json();
 		console.log(data);
-		const t: ToastSettings = {
-			message: `Usuário cadastrado com sucesso, lembre-se de accesar a sua conta!`,
-			timeout: 3000,
-			background: 'variant-ghost-secondary'
-		};
-		toastStore.trigger(t);
-		goto('/admin/criar-evento');
-		window.location.reload();
+		alert(data.message);
 		if (data.status === 400) {
 			console.log(data.status);
 		} else if (data.status === 201) {
-			data.role === 'ADMIN' ? goto('/admin') : goto('/');
+			data.role === 'ADMIN' ? goto('/admin') : goto('/user');
 			if ($modalStore[0].response) $modalStore[0].response(data);
 			modalStore.close();
 		} else {
