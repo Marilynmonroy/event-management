@@ -1,16 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import {
-		getToastStore,
-		SlideToggle,
-		type PopupSettings,
-		type ToastSettings,
-		popup
-	} from '@skeletonlabs/skeleton';
-	import { PenSquare, XCircle } from 'lucide-svelte';
+	import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton';
+	import { PencilLine, XCircle } from 'lucide-svelte';
+	import { redirect } from '@sveltejs/kit';
+
 	const toastStore = getToastStore();
 
 	let dadosTable: any[] = [];
+	$: dadosTable;
 	let inscritos = 0;
 
 	onMount(async () => {
@@ -20,6 +17,7 @@
 				'Content-Type': 'application/json'
 			}
 		});
+
 		if (res.ok) {
 			const data = await res.json();
 			dadosTable = data;
@@ -33,15 +31,29 @@
 			toastStore.trigger(t);
 		}
 	});
+	async function deletarEvento(id: string) {
+		const res = await fetch(`/api/events/${id}`, {
+			method: 'DELETE'
+		});
 
-	const popupFeatured: PopupSettings = {
-		// Represents the type of event that opens/closed the popup
-		event: 'click',
-		// Matches the data-popup value on your popup element
-		target: 'popupFeatured',
-		// Defines which side of your trigger the popup will appear
-		placement: 'left'
-	};
+		if (res.ok) {
+			const t: ToastSettings = {
+				message: 'Evento deletado com sucesso!',
+				timeout: 3000,
+				background: 'variant-ghost-secondary'
+			};
+			toastStore.trigger(t);
+			// Recarrega a página após a exclusão bem-sucedida
+			window.location.reload();
+		} else {
+			const t: ToastSettings = {
+				message: 'Erro ao deletar o evento!',
+				timeout: 3000,
+				background: 'variant-ghost-error'
+			};
+			toastStore.trigger(t);
+		}
+	}
 </script>
 
 <div class="flex flex-col overflow-x-auto w-full items-center pt-5">
@@ -49,12 +61,12 @@
 		<!-- head -->
 		<thead>
 			<tr>
-				<th class="w-[16%]"></th>
+				<th class="w-[15%]"></th>
 				<th class="w-[30%]">Evento</th>
 				<th class="w-[15%]">Dia do evento</th>
-				<th class="w-[10%]">Incritos</th>
+				<th class="w-[15%]">Incritos</th>
 				<th class="w-[10%]">Status</th>
-				<th class="w-[19%]"></th>
+				<th class="w-[15%]"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -76,15 +88,16 @@
 							<div class="text-sm opacity-50">{evento.location}</div>
 						</div>
 					</td>
-					<td class="flex items-center h-20">
-						<div class="font-bold text-base">
-							{evento.dataEvent
-								? new Date(evento.dataEvent).toLocaleDateString()
-								: 'Erro na data'}
-							<br />
-							<span class="flex w-full text-xs text-gray-400"
-								>{evento.beginningEvent} > {evento.endEvent}</span
-							>
+					<td class=" h-20">
+						<div class="flex flex-col h-20 justify-center">
+							<div class="w-full">
+								{evento.dataEvent
+									? new Date(evento.dataEvent).toLocaleDateString()
+									: 'Erro na data'}
+							</div>
+							<div class="flex w-full text-xs text-gray-400">
+								{evento.beginningEvent} > {evento.endEvent}
+							</div>
 						</div>
 					</td>
 					<td class="  h-20">
@@ -102,27 +115,13 @@
 						</div>
 					</td>
 					<th class=" h-20">
-						<div class="flex justify-center items-center">
-							<button class="btn variant-filled" use:popup={popupFeatured}>
-								Show Popup
+						<div class="flex justify-evenly items-center gap-6">
+							<button>
+								<PencilLine size={32} />
 							</button>
-						</div>
-						<div class="card p-4 w-40 shadow-xl" data-popup="popupFeatured">
-							<div class="flex flex-col gap-2">
-								<button type="button" class="btn variant-filled">
-									<span><PenSquare /> </span>
-									<span>Editar</span>
-								</button>
-								<button type="button" class="btn variant-filled">
-									<span><XCircle /> </span>
-									<span>Deletar</span>
-								</button>
-
-								<button type="button" class="btn variant-filled">
-									<span>(icon)</span>
-									<span>Button</span>
-								</button>
-							</div>
+							<button on:click={() => deletarEvento(evento.id)}>
+								<XCircle color="#c11f48" size={32} />
+							</button>
 						</div>
 					</th>
 				</tr>

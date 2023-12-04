@@ -9,7 +9,7 @@ export const actions: Actions = {
 	criarEvento: async ({ request }) => {
 		const data = await request.formData();
 
-		console.log(data);
+		// console.log(data);
 
 		const title: any = data.get('tituloEvento');
 		const location: any = data.get('localizacao');
@@ -23,6 +23,21 @@ export const actions: Actions = {
 
 		// console.log(dataEvent);
 
+		if (
+			!title ||
+			!location ||
+			!category ||
+			!capacity ||
+			!dataEvent ||
+			!beginningEvent ||
+			!endEvent ||
+			!description
+		) {
+			return {
+				status: 400,
+				message: 'Preencha todos os campos'
+			};
+		}
 		const event = await prisma.event.create({
 			data: {
 				title,
@@ -40,9 +55,7 @@ export const actions: Actions = {
 
 		return {
 			status: 200,
-			body: {
-				event
-			}
+			message: 'Evento criado com sucesso!'
 		};
 	}
 };

@@ -10,7 +10,8 @@
 		storePopup,
 		getModalStore,
 		type ModalComponent,
-		type ModalSettings
+		type ModalSettings,
+		Toast
 	} from '@skeletonlabs/skeleton';
 	import ModalLogin from '$lib/components/modals/ModalLogin.svelte';
 	import ModalRegister from '$lib/components/modals/ModalRegister.svelte';
@@ -50,6 +51,8 @@
 		goto('/');
 	}
 </script>
+
+<Toast position="br" padding="mb-3 mr-2 p-5" />
 
 <!-- App Shell -->
 

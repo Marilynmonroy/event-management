@@ -1,12 +1,16 @@
 <script lang="ts">
-	import { FileDropzone } from '@skeletonlabs/skeleton';
-	import type { PageData } from './$types';
+	import { FileDropzone, type ToastSettings } from '@skeletonlabs/skeleton';
+	import type { ActionData, PageData } from './$types';
 	import { FileUp } from 'lucide-svelte';
 	import { onMount } from 'svelte';
-	import { enhance } from '$app/forms';
-	import { goto } from '$app/navigation';
+	import { getToastStore } from '@skeletonlabs/skeleton';
+
+	const toastStore = getToastStore();
 
 	export let data: PageData;
+	export let form: ActionData;
+	console.log(form);
+
 	let categorias: any[] = [];
 	// tem algum erro aqui
 	onMount(async () => {
@@ -24,23 +28,27 @@
 			console.log('erro', res.status);
 		}
 	});
+
+	if (form?.status === 200) {
+		const t: ToastSettings = {
+			message: 'Evento criado com sucesso!',
+			timeout: 3000,
+			background: 'variant-ghost-secondary'
+		};
+		toastStore.trigger(t);
+	} else if (form?.status === 400) {
+		const t: ToastSettings = {
+			message: 'Preencha todos os campos',
+			background: 'variant-ghost-error',
+			timeout: 3000
+		};
+		toastStore.trigger(t);
+	}
 </script>
 
 <div class="flex flex-col w-full items-center">
 	<h1 class="h2 p-5 font-bold">Bora criar o seu evento?</h1>
-	<form
-		action="?/criarEvento"
-		use:enhance={({ cancel }) => {
-			if (data.session === 'ADMIN') {
-				goto('/admin/criar-evento');
-			} else {
-				cancel();
-				goto('/admin/criar-evento');
-			}
-		}}
-		method="post"
-		class="card flex flex-col p-5 w-[85%] gap-3"
-	>
+	<form action="?/criarEvento" method="post" class="card flex flex-col p-5 w-[85%] gap-3">
 		<div class="flex w-full gap-5 items-end">
 			<!------------------------- Titulo do evento -->
 			<label class="label w-1/2">
@@ -128,14 +136,14 @@
 		<div>
 			<span>Poster do evento:</span>
 			<!------------------------- imagem do evento -->
-			<FileDropzone name="imagemEvento" id="imagemEvento">
+			<FileDropzone name="imagemEvento" id="imagemEvento" enctype="multipart/form-data">
 				<svelte:fragment slot="lead">
 					<span class="flex w-full justify-center">
 						<FileUp size={42} color="#1fd99b" />
 					</span>
 				</svelte:fragment>
 				<svelte:fragment slot="message">
-					<span class="font-bold">Clique parasubir uma imagem</span> ou arraste o arquivo
+					<span class="font-bold">Clique para subir uma imagem</span> ou arraste o arquivo
 				</svelte:fragment>
 				<svelte:fragment slot="meta">PNG, JPG and GIF são permitidos</svelte:fragment>
 			</FileDropzone>
